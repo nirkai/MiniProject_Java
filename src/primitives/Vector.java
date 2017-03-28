@@ -30,8 +30,11 @@ public class Vector implements Comparable<Vector> {
 	}
 	
 	public Vector(Point3D p1, Point3D p2) { // i suppose this is for tabbing the vector
-		_head = new Point3D(p2);
-		p1.subtract(this);
+		if (p1.compareTo(p2) != 0) {//////////// if p1 == p2 it's not a vector!
+			_head = new Point3D(p2);
+			p1.subtract(this);
+		}
+	//	else problem
 	}
 	
 	// ***************** Getters/Setters ********************** //
@@ -67,9 +70,9 @@ public class Vector implements Comparable<Vector> {
 	}
 	
 	public Vector crossProduct(Vector vector){   /// vectory product ????
-		double x = (coordinate(2) * vector.coordinate(3) - coordinate(3) * vector.coordinate(2));
-		double y = -(coordinate(1) * vector.coordinate(3) - coordinate(3) * vector.coordinate(1));
-		double z = (coordinate(1) * vector.coordinate(2) - coordinate(2) * vector.coordinate(1));
+		double x =  ( (coordinate(2) * vector.coordinate(3)) - (coordinate(3) * vector.coordinate(2)) );
+		double y = -( (coordinate(1) * vector.coordinate(3)) - (coordinate(3) * vector.coordinate(1)) );
+		double z =  ( (coordinate(1) * vector.coordinate(2)) - (coordinate(2) * vector.coordinate(1)) );
 		return new Vector(x,y,z);
 	}
 	
