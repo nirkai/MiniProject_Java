@@ -52,7 +52,10 @@ public class Vector {
 				_head._x.getCoordinate(), _head._y.getCoordinate(), _head._z.getCoordinate());
 	}
 	// ***************** Operations ******************** //
-//	public void add (Vector vector );
+	public void add (Vector vector ){
+		
+	}
+	
 //	public void subtract (Vector vector);
 	
 	public void scale(double scalingFactor) {
