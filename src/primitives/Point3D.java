@@ -48,12 +48,10 @@ public class Point3D extends Point2D {
 	}
 	
 	// ***************** Administration ******************** //
-	public int compareTo(Point3D point3D) {
-	//	if (super.compareTo(this, point3D) == 0) {
-			
-	//	}							//////////
-		if (_x.compareTo(point3D._x) == 0) {
-			return _z.compareTo(point3D._z);
+	@Override
+	public int compareTo(Point2D point3D) {
+		if (_x.compareTo(point3D._x) == 0) {              /// check it !!!
+			return _z.compareTo( ((Point3D)point3D)._z );
 		}
 		else return 1;
 	}

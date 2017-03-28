@@ -45,18 +45,6 @@ public  class Point2D implements Comparable<Point2D> {
 		if (_x.compareTo(point2D._x) == 0) {
 			return _y.compareTo(point2D._y);
 		} 
-		return 1;
-		//return (int)(_x.getCoordinate()*_x.getCoordinate() + _y.getCoordinate()*_y.getCoordinate() - 
-			//	(point2D._x.getCoordinate()*point2D._x.getCoordinate() + point2D._y.getCoordinate()*point2D._y.getCoordinate()));
-		/*int length = (int)(_x.getCoordinate()*_x.getCoordinate() + _y.getCoordinate()*_y.getCoordinate() - 
-				(point2D._x.getCoordinate()*point2D._x.getCoordinate() + point2D._y.getCoordinate()*point2D._y.getCoordinate()));
-		if (length > 0) {
-			return 1;
-		}else if (length < 0) {
-			return -1;
-		}else {
-			return 0;
-		}*/
-		
+		return 1;		
 	}
 }
