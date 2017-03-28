@@ -1,6 +1,6 @@
 package primitives;
 
-public  class Point2D  {
+public  class Point2D implements Comparable<Point2D> {
 	
 	protected Coordinate _x;
 	protected Coordinate _y;
@@ -39,7 +39,7 @@ public  class Point2D  {
 	
 	// ***************** Administration ******************** //
 	
-
+	@Override
 	public int compareTo(Point2D point2D) {
 		
 		if (_x.compareTo(point2D._x) == 0) {

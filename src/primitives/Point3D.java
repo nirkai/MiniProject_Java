@@ -9,7 +9,7 @@ package primitives;
  * Extends from Point2D class
  * 
  */
-public class Point3D extends Point2D{
+public class Point3D extends Point2D {
 	
 	// the space coordinate
 	protected Coordinate _z;
@@ -48,8 +48,6 @@ public class Point3D extends Point2D{
 	}
 	
 	// ***************** Administration ******************** //
-	
-
 	public int compareTo(Point3D point3D) {
 	//	if (super.compareTo(this, point3D) == 0) {
 			
@@ -73,11 +71,13 @@ public class Point3D extends Point2D{
 	}
 	
 	public void subtract(Vector vector) {
-		
+		_x.setCoordinate(_x.getCoordinate() - vector.getHead().getX().getCoordinate());
+		_y.setCoordinate(_y.getCoordinate() - vector.getHead().getY().getCoordinate());
+		_z.setCoordinate(_z.getCoordinate() - vector.getHead().getZ().getCoordinate());
 	}
 	public double distance(Point3D point){
 		
-		return 0;					///////
+		return 0;					//////////
 	}
 	
 }

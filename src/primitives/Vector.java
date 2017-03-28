@@ -9,7 +9,7 @@ package primitives;
  *
  */
 
-public class Vector {
+public class Vector implements Comparable<Vector> {
 	
 	private Point3D _head;
 	// ***************** Constructors ********************** //
@@ -42,6 +42,7 @@ public class Vector {
 		_head = new Point3D(head);
 	}
 	// ***************** Administration ******************** //
+	@Override
 	public int compareTo(Vector vector){   //////////
 		return _head.compareTo(vector._head);
 	}
@@ -49,26 +50,33 @@ public class Vector {
 	@Override
 	public String toString() {
 		return String.format("(s%, %s, %s)\n", 
-				_head._x.getCoordinate(), _head._y.getCoordinate(), _head._z.getCoordinate());
+				coordinate(1), coordinate(2), coordinate(3));
 	}
 	// ***************** Operations ******************** //
 	public void add (Vector vector ){
+		_head.add(vector);
+	}
+	public void subtract (Vector vector){
 		
 	}
 	
-//	public void subtract (Vector vector);
-	
 	public void scale(double scalingFactor) {
-		_head._x.setCoordinate(scalingFactor * _head._x.getCoordinate()); 
-		_head._y.setCoordinate(scalingFactor * _head._y.getCoordinate()); 
-		_head._z.setCoordinate(scalingFactor * _head._z.getCoordinate()); 
+		_head._x.setCoordinate(scalingFactor * coordinate(1)); 
+		_head._y.setCoordinate(scalingFactor * coordinate(2)); 
+		_head._z.setCoordinate(scalingFactor * coordinate(3)); 
 	}
 	
-//	public Vector crossProduct(Vector vector);
+	public Vector crossProduct(Vector vector){   /// vectory product ????
+		double x = (coordinate(2) * vector.coordinate(3) - coordinate(3) * vector.coordinate(2));
+		double y = -(coordinate(1) * vector.coordinate(3) - coordinate(3) * vector.coordinate(1));
+		double z = (coordinate(1) * vector.coordinate(2) - coordinate(2) * vector.coordinate(1));
+		return new Vector(x,y,z);
+	}
+	
 	public double length(){
-		return Math.sqrt(Math.pow(_head._x.getCoordinate(),2)
-				+ Math.pow(_head._y.getCoordinate(),2)
-				+ Math.pow(_head._z.getCoordinate(),2));
+		return Math.sqrt(Math.pow(coordinate(1),2)
+				+ Math.pow(coordinate(2),2)
+				+ Math.pow(coordinate(3),2));
 	}
 	public void normalize() throws Exception {	// Throws exception if length = 0
 		if (length() == 0) {

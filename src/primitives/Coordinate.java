@@ -9,7 +9,7 @@ package primitives;
   * This class take care the base of the coordinate in the Number Line
   *
   */
-public  class Coordinate {
+public  class Coordinate implements Comparable<Coordinate>{
 	
 	// coordinate in the Number Line
 	private double _coordinate;
@@ -34,18 +34,10 @@ public  class Coordinate {
 	}
 	
 	// ***************** Administration ******************** //
+	@Override
 	public int compareTo(Coordinate coordinate){
-		//return Double.compare(_coordinate, coordinate._coordinate);
-		 return (int)(_coordinate - coordinate._coordinate);
-		// we need to check if it length. if so - need to check if the coordinate negative !!! 
-		/*if (_coordinate > coordinate._coordinate ) {
-			return 1;
-		}else if (_coordinate < coordinate._coordinate ) {
-			return -1;
-		}
-		else {
-			return 0;
-		}*/
+		return Double.compare(_coordinate, coordinate._coordinate);
+		// return (int)(_coordinate - coordinate._coordinate);
 	}
 	
 	
