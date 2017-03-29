@@ -1,19 +1,27 @@
 package primitives;
 
-import com.sun.javafx.image.impl.ByteIndexed.Getter;
-
 /**
- * 
+ * This class make a Vector
  * @author Uria
  * @author Nir
  * 
- * This class make a Vector
+ * Enables vector adding/subtraction 
+ * scalar multiplication
+ * displacement 
+ * vector length calculation
+ * vector normalization
+ * vector multiplication
+ * 
+ * המחלקה מאפשרת בניית וקטור
+ *  מאפשרת לבצע חיבור/חיסור וקטורי, מכפלה סקלארית, הזזה, חישוב אורך הוקטור, נרמול הוקטור, מכפלה וקטורית 
  *
  */
 
 public class Vector implements Comparable<Vector> {
 	
+	// Head of the Vector. Base from the first of the contractions
 	private Point3D _head;
+	
 	// ***************** Constructors ********************** //
 	
 	public Vector() {
@@ -42,6 +50,7 @@ public class Vector implements Comparable<Vector> {
 	public Point3D getHead() {
 		return _head;
 	}
+	// Getters for the coordinates of the vector head
 	public double getX() {
 		return _head._x.getCoordinate();
 	}
@@ -55,6 +64,7 @@ public class Vector implements Comparable<Vector> {
 	public void setHead(Point3D head) {
 		_head = new Point3D(head);
 	}
+	// Setters for the coordinates of the vector head
 	public void setX(double x) {
 		_head.getX().setCoordinate(x);
 	}
@@ -76,31 +86,53 @@ public class Vector implements Comparable<Vector> {
 				getX(), getY(), getZ());
 	}
 	// ***************** Operations ******************** //
+	/**
+	 * Add two Vectors
+	 * @param vector
+	 */
 	public void add (Vector vector ){
 		_head.add(vector);
 	}
+	/**
+	 * Subtract two Vectors
+	 * @param vector
+	 */
 	public void subtract (Vector vector){
-		
+		_head.subtract(vector);
 	}
-	
+	/**
+	 * Dot a Vector with a scalar
+	 * @param scalingFactor
+	 */
 	public void scale(double scalingFactor) {
 		_head._x.setCoordinate(scalingFactor * getX() ); 
 		_head._y.setCoordinate(scalingFactor * getY() ); 
 		_head._z.setCoordinate(scalingFactor * getZ() ); 
 	}
-	
+	/**
+	 * Done a Vectors product between two vectors
+	 * @param vector
+	 * @return new third Vector that that stand to the two vectors
+	 */
 	public Vector crossProduct(Vector vector){   /// vectory product ????
 		double x = ( (getY() * vector.getZ()) - (getZ() * vector.getY()) );		
 		double y = -( (getX() * vector.getZ()) - (getZ() * vector.getX()) );
 		double z = ( (getX() * vector.getY()) - (getY() * vector.getX()) );
 		return new Vector(x,y,z);
 	}
-	
+	/**
+	 * Calculate the length of the Vector
+	 * @return The length of the Vector
+	 */
 	public double length(){
 		return Math.sqrt(Math.pow(getX(),2)
 				+ Math.pow(getY(),2)
 				+ Math.pow(getZ(),2));
 	}
+	/**
+	 * Calculates the normalization of the vector 
+	 * @throws Exception if the length of the vector equal to 0
+	 */
 	public void normalize() throws Exception {	// Throws exception if length = 0
 		if (length() == 0) {
 			throw new Exception("Can't devide in zero");
@@ -110,6 +142,11 @@ public class Vector implements Comparable<Vector> {
 		_head._y.setCoordinate(getY() / len);
 		_head._z.setCoordinate(getZ() / len);
 	}
+	/**
+	 * Done a dot product between two vectors
+	 * @param vector
+	 * @return The scalar of the dot-product 
+	 */
 	public double dotProduct(Vector vector){
 		return (  getX() * vector.getX()
 				+ getY() * vector.getY()

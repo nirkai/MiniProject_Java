@@ -2,12 +2,12 @@ package primitives;
 
 import static org.junit.Assert.*;
 
-import javax.xml.transform.Source;
+//import javax.xml.transform.Source;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import com.sun.corba.se.impl.orb.NormalDataCollector;
+//import com.sun.corba.se.impl.orb.NormalDataCollector;
 
 public class Junit_Primitives {
 
@@ -42,8 +42,9 @@ public class Junit_Primitives {
 			// TODO: handle exception
 		}
 		int y = result.compareTo(source);
-		
+	//	double t = Double.compare(0.0, -0.0);
 		assertEquals(0,z,0);  
+//		assertEquals(0,Double.compare(0.0,0.0),0);  
 		assertEquals(0,y,0);
 		assertEquals(-30,x, 0);
 		//fail("Not yet implemented");
