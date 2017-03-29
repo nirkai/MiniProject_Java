@@ -30,10 +30,8 @@ public class Vector implements Comparable<Vector> {
 	}
 	
 	public Vector(Point3D p1, Point3D p2) { // i suppose this is for tabbing the vector
-		if (p1.compareTo(p2) != 0) {//////////// if p1 == p2 it's not a vector!
 			_head = new Point3D(p2);
 			p1.subtract(this);
-		}
 	//	else problem
 	}
 	

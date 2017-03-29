@@ -36,8 +36,8 @@ public  class Coordinate implements Comparable<Coordinate>{
 	// ***************** Administration ******************** //
 	@Override
 	public int compareTo(Coordinate coordinate){
-		return Double.compare(_coordinate, coordinate._coordinate);
-		// return (int)(_coordinate - coordinate._coordinate);
+		//return Double.compare(_coordinate, coordinate._coordinate);
+		 return (int)(_coordinate - coordinate._coordinate);
 	}
 	
 	
