@@ -43,17 +43,20 @@ public  class Coordinate implements Comparable<Coordinate>{
 	
 	// ***************** Operations ******************** //
 	public void add (Coordinate coordinate){
-		_coordinate = Math.abs(_coordinate);
-		_coordinate += Math.abs(coordinate._coordinate);
+//		_coordinate = Math.abs(_coordinate);
+//		_coordinate += Math.abs(coordinate._coordinate);
+		_coordinate += coordinate.getCoordinate();
 		
 	}
 	
 	public void subtract (Coordinate coordinate){
-		if (_coordinate >= coordinate._coordinate) {
-			_coordinate -= coordinate._coordinate;
-		}else {
-			_coordinate = coordinate._coordinate - _coordinate;
-		}
+		_coordinate -= coordinate.getCoordinate();
+//		if (_coordinate >= coordinate._coordinate) {
+//			_coordinate -= coordinate._coordinate;
+//		}else {
+//			_coordinate = coordinate._coordinate - _coordinate;
+//		}
+		
 	}
 	
 	
