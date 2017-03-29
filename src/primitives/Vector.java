@@ -1,5 +1,7 @@
 package primitives;
 
+import com.sun.javafx.image.impl.ByteIndexed.Getter;
+
 /**
  * 
  * @author Uria
@@ -36,11 +38,31 @@ public class Vector implements Comparable<Vector> {
 	}
 	
 	// ***************** Getters/Setters ********************** //
+	
 	public Point3D getHead() {
 		return _head;
 	}
+	public double getX() {
+		return _head._x.getCoordinate();
+	}
+	public double getY() {
+		return _head._y.getCoordinate();
+	}
+	public double getZ() {
+		return _head._z.getCoordinate();
+	}
+	
 	public void setHead(Point3D head) {
 		_head = new Point3D(head);
+	}
+	public void setX(double x) {
+		_head.getX().setCoordinate(x);
+	}
+	public void setY(double y) {
+		_head.getY().setCoordinate(y);
+	}
+	public void setZ(double z) {
+		_head.getZ().setCoordinate(z);
 	}
 	// ***************** Administration ******************** //
 	@Override
@@ -51,7 +73,7 @@ public class Vector implements Comparable<Vector> {
 	@Override
 	public String toString() {
 		return String.format("(s%, %s, %s)\n", 
-				coordinate(1), coordinate(2), coordinate(3));
+				getX(), getY(), getZ());
 	}
 	// ***************** Operations ******************** //
 	public void add (Vector vector ){
@@ -62,35 +84,36 @@ public class Vector implements Comparable<Vector> {
 	}
 	
 	public void scale(double scalingFactor) {
-		_head._x.setCoordinate(scalingFactor * coordinate(1)); 
-		_head._y.setCoordinate(scalingFactor * coordinate(2)); 
-		_head._z.setCoordinate(scalingFactor * coordinate(3)); 
+		_head._x.setCoordinate(scalingFactor * getX() ); 
+		_head._y.setCoordinate(scalingFactor * getY() ); 
+		_head._z.setCoordinate(scalingFactor * getZ() ); 
 	}
 	
 	public Vector crossProduct(Vector vector){   /// vectory product ????
-		double x =  ( (coordinate(2) * vector.coordinate(3)) - (coordinate(3) * vector.coordinate(2)) );
-		double y = -( (coordinate(1) * vector.coordinate(3)) - (coordinate(3) * vector.coordinate(1)) );
-		double z =  ( (coordinate(1) * vector.coordinate(2)) - (coordinate(2) * vector.coordinate(1)) );
+		double x = ( (getY() * vector.getZ()) - (getZ() * vector.getY()) );		
+		double y = -( (getX() * vector.getZ()) - (getZ() * vector.getX()) );
+		double z = ( (getX() * vector.getY()) - (getY() * vector.getX()) );
 		return new Vector(x,y,z);
 	}
 	
 	public double length(){
-		return Math.sqrt(Math.pow(coordinate(1),2)
-				+ Math.pow(coordinate(2),2)
-				+ Math.pow(coordinate(3),2));
+		return Math.sqrt(Math.pow(getX(),2)
+				+ Math.pow(getY(),2)
+				+ Math.pow(getZ(),2));
 	}
 	public void normalize() throws Exception {	// Throws exception if length = 0
 		if (length() == 0) {
 			throw new Exception("Can't devide in zero");
 		}
-		_head._x.setCoordinate(coordinate(1) / length());
-		_head._y.setCoordinate(coordinate(2) / length());
-		_head._z.setCoordinate(coordinate(3) / length());
+		double len = length();
+		_head._x.setCoordinate(getX() / len);
+		_head._y.setCoordinate(getY() / len);
+		_head._z.setCoordinate(getZ() / len);
 	}
 	public double dotProduct(Vector vector){
-		return (  coordinate(1) * vector.coordinate(1)
-				+ coordinate(2) * vector.coordinate(2)
-				+ coordinate(3) * vector.coordinate(3) );
+		return (  getX() * vector.getX()
+				+ getY() * vector.getY()
+				+ getZ() * vector.getZ() );
 	}
 	
 	

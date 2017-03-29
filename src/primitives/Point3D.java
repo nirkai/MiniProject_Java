@@ -2,8 +2,8 @@ package primitives;
 
 /**
  * 
- * @author Nir
  * @author Uria
+ * @author Nir
  * 
  * This class take care the point in space
  * Extends from Point2D class
@@ -66,19 +66,21 @@ public class Point3D extends Point2D {
 	
 	// ***************** Operations ******************** //
 	public void add(Vector vector){
-		_x.setCoordinate(_x.getCoordinate() + vector.getHead().getX().getCoordinate());
-		_y.setCoordinate(_y.getCoordinate() + vector.getHead().getY().getCoordinate());
-		_z.setCoordinate(_z.getCoordinate() + vector.getHead().getZ().getCoordinate());
+		_x.setCoordinate( _x.getCoordinate() + vector.getX() );
+		_y.setCoordinate( _y.getCoordinate() + vector.getY() );
+		_z.setCoordinate( _z.getCoordinate() + vector.getZ() );
+
 	}
 	
 	public void subtract(Vector vector) {
-		_x.setCoordinate(_x.getCoordinate() - vector.getHead().getX().getCoordinate());
-		_y.setCoordinate(_y.getCoordinate() - vector.getHead().getY().getCoordinate());
-		_z.setCoordinate(_z.getCoordinate() - vector.getHead().getZ().getCoordinate());
+		_x.setCoordinate( _x.getCoordinate() - vector.getX() );
+		_y.setCoordinate( _y.getCoordinate() - vector.getY() );
+		_z.setCoordinate( _z.getCoordinate() - vector.getZ() );
 	}
 	public double distance(Point3D point){
-		
-		return 0;					//////////
+		return Math.sqrt( Math.pow((_x.getCoordinate() - point._x.getCoordinate()),2)
+				+ Math.pow((_y.getCoordinate() - point._y.getCoordinate()),2)
+				+ Math.pow((_z.getCoordinate() - point._z.getCoordinate()),2) );					//////////
 	}
 	
 }
