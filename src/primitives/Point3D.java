@@ -1,5 +1,7 @@
 package primitives;
 
+import sun.net.www.content.audio.x_aiff;
+
 /**
  * This class take care the point in space
  * Extends from Point2D class
@@ -68,16 +70,19 @@ public class Point3D extends Point2D {
 	 * @param vector
 	 */
 	public void add(Vector vector){
-		_x.setCoordinate( _x.getCoordinate() + vector.getX() );
-		_y.setCoordinate( _y.getCoordinate() + vector.getY() );
-		_z.setCoordinate( _z.getCoordinate() + vector.getZ() );
+		
+		_x.add(vector.getHead()._x);
+		_y.add(vector.getHead()._y);
+		_z.add(vector.getHead()._z);
 
 	}
 	
 	public void subtract(Vector vector) {
-		_x.setCoordinate( _x.getCoordinate() - vector.getX() );
-		_y.setCoordinate( _y.getCoordinate() - vector.getY() );
-		_z.setCoordinate( _z.getCoordinate() - vector.getZ() );
+		
+		_x.subtract(vector.getHead()._x);
+		_y.subtract(vector.getHead()._y);
+		_z.subtract(vector.getHead()._z);
+		
 	}
 	/**
 	 * one point get a second point. Calculate the distance between the two points
