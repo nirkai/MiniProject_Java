@@ -3,6 +3,7 @@ package primitives;
 /**
  * This class take care the point in space
  * Extends from Point2D class
+ * 
  * @author Uria
  * @author Nir
  * 
@@ -22,8 +23,8 @@ public  class Point2D implements Comparable<Point2D> {
 	
 
 	public Point2D(Coordinate x, Coordinate y) {
-		_y = new Coordinate(y);
 		_x = new Coordinate(x);
+		_y = new Coordinate(y);
 	}
 	public Point2D(Point2D point2D) {
 		this(point2D._x,point2D._y);

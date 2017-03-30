@@ -2,6 +2,7 @@ package primitives;
 
 /**
  * This class make a Vector
+ * 
  * @author Uria
  * @author Nir
  * 

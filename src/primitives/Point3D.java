@@ -5,6 +5,7 @@ import sun.net.www.content.audio.x_aiff;
 /**
  * This class take care the point in space
  * Extends from Point2D class
+ * 
  * @author Uria
  * @author Nir
  * 
@@ -30,7 +31,7 @@ public class Point3D extends Point2D {
 	
 	public Point3D(Coordinate x, Coordinate y, Coordinate z) {
 		super(x, y);
-		_z = new Coordinate();
+		_z = new Coordinate(z);
 	}
 	
 	public Point3D(Point3D point3D) {

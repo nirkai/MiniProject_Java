@@ -3,6 +3,7 @@ package primitives;
 /**
  * This class take care of the rays. 
  * This is a vector that does not necessarily come from the beginning of the contractions
+ * 
  * @author Uria
  * @author Nir
  *
