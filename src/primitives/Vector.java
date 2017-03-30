@@ -133,9 +133,9 @@ public class Vector implements Comparable<Vector> {
 	 * Calculates the normalization of the vector 
 	 * @throws Exception if the length of the vector equal to 0
 	 */
-	public void normalize() throws Exception {	// Throws exception if length = 0
+	public void normalize() {	// Throws exception if length = 0
 		if (length() == 0) {
-			throw new Exception("Can't devide in zero");
+			throw new ArithmeticException("Can't devide in zero");
 		}
 		double len = length();
 		_head._x.setCoordinate(getX() / len);
