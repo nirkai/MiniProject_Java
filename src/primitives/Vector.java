@@ -64,7 +64,7 @@ public class Vector implements Comparable<Vector> {
 	public void setHead(Point3D head) {
 		_head = new Point3D(head);
 	}
-	// Setters for the coordinates of the vector head
+/*	// Setters for the coordinates of the vector head
 	public void setX(double x) {
 		_head.getX().setCoordinate(x);
 	}
@@ -73,7 +73,7 @@ public class Vector implements Comparable<Vector> {
 	}
 	public void setZ(double z) {
 		_head.getZ().setCoordinate(z);
-	}
+	}*/
 	// ***************** Administration ******************** //
 	@Override
 	public int compareTo(Vector vector){   //////////

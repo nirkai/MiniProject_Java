@@ -80,5 +80,4 @@ public class Point3D extends Point2D {
 				+ Math.pow((_y.getCoordinate() - point._y.getCoordinate()),2)
 				+ Math.pow((_z.getCoordinate() - point._z.getCoordinate()),2) );					//////////
 	}
-	
 }
