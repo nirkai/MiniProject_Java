@@ -63,6 +63,10 @@ public class Point3D extends Point2D {
 	}
 	
 	// ***************** Operations ******************** //
+	/**
+	 * Adding two points
+	 * @param vector
+	 */
 	public void add(Vector vector){
 		_x.setCoordinate( _x.getCoordinate() + vector.getX() );
 		_y.setCoordinate( _y.getCoordinate() + vector.getY() );
@@ -75,6 +79,11 @@ public class Point3D extends Point2D {
 		_y.setCoordinate( _y.getCoordinate() - vector.getY() );
 		_z.setCoordinate( _z.getCoordinate() - vector.getZ() );
 	}
+	/**
+	 * one point get a second point. Calculate the distance between the two points
+	 * @param point
+	 * @return The distance between the two points
+	 */
 	public double distance(Point3D point){
 		return Math.sqrt( Math.pow((_x.getCoordinate() - point._x.getCoordinate()),2)
 				+ Math.pow((_y.getCoordinate() - point._y.getCoordinate()),2)

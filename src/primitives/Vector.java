@@ -114,7 +114,7 @@ public class Vector implements Comparable<Vector> {
 	 * @param vector
 	 * @return new third Vector that that stand to the two vectors
 	 */
-	public Vector crossProduct(Vector vector){   /// vectory product ????
+	public Vector crossProduct(Vector vector){
 		double x = ( (getY() * vector.getZ()) - (getZ() * vector.getY()) );		
 		double y = ( (getZ() * vector.getX()) - (getX() * vector.getZ()) );	// == -( (getX() * vector.getZ()) - (getZ() * vector.getX()) )
 		double z = ( (getX() * vector.getY()) - (getY() * vector.getX()) );
