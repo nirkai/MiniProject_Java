@@ -1,11 +1,20 @@
 package primitives;
 
+/**
+ * This class take care of the rays. 
+ * This is a vector that does not necessarily come from the beginning of the contractions
+ * @author Uria
+ * @author Nir
+ *
+ *	
+ */
 public class Ray {
 	// Point of origin
 	private Point3D _POO;
 	// Ray direction
 	private Vector _direction;
 	// ***************** Constructors ********************** //
+	
 	public Ray(){
 		_POO=new  Point3D();
 		_direction=new Vector();

@@ -116,7 +116,7 @@ public class Vector implements Comparable<Vector> {
 	 */
 	public Vector crossProduct(Vector vector){   /// vectory product ????
 		double x = ( (getY() * vector.getZ()) - (getZ() * vector.getY()) );		
-		double y = -( (getX() * vector.getZ()) - (getZ() * vector.getX()) );
+		double y = ( (getZ() * vector.getX()) - (getX() * vector.getZ()) );	// == -( (getX() * vector.getZ()) - (getZ() * vector.getX()) )
 		double z = ( (getX() * vector.getY()) - (getY() * vector.getX()) );
 		return new Vector(x,y,z);
 	}

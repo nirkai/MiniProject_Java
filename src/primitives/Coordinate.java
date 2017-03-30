@@ -2,11 +2,11 @@ package primitives;
 
 
  /**
-  * 
+  * This class take care the base of the coordinate in the Number Line
   * @author Uria 
   * @author Nir
   * 
-  * This class take care the base of the coordinate in the Number Line
+  * Can Adding and Subtracting between two coordinates
   *
   */
 public  class Coordinate implements Comparable<Coordinate>{
@@ -42,21 +42,20 @@ public  class Coordinate implements Comparable<Coordinate>{
 	
 	
 	// ***************** Operations ******************** //
+	/**
+	 * One coordinate get second coordinate and adding the second the the first
+	 * @param coordinate
+	 */
 	public void add (Coordinate coordinate){
-//		_coordinate = Math.abs(_coordinate);
-//		_coordinate += Math.abs(coordinate._coordinate);
 		_coordinate += coordinate.getCoordinate();
-		
 	}
 	
+	/**
+	 * One coordinate get second coordinate and subtract the second from the first
+	 * @param coordinate
+	 */
 	public void subtract (Coordinate coordinate){
-		_coordinate -= coordinate.getCoordinate();
-//		if (_coordinate >= coordinate._coordinate) {
-//			_coordinate -= coordinate._coordinate;
-//		}else {
-//			_coordinate = coordinate._coordinate - _coordinate;
-//		}
-		
+		_coordinate -= coordinate.getCoordinate();		
 	}
 	
 	

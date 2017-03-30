@@ -1,18 +1,16 @@
 package primitives;
 
 /**
- * 
+ * This class take care the point in space
+ * Extends from Point2D class
  * @author Uria
  * @author Nir
  * 
- * This class take care the point in space
- * Extends from Point2D class
  * 
  */
 public class Point3D extends Point2D {
 	
-	// the space coordinate
-	protected Coordinate _z;
+	protected Coordinate _z;	// coordinate on axis Z
 	
 	// ***************** Constructors ********************** //
 	
