@@ -40,10 +40,12 @@ public  class Point2D implements Comparable<Point2D> {
 		
 	}
 	public void setX(Coordinate x) {
-		_x =new Coordinate(x) ;                     
+		//_x =new Coordinate(x) ;
+		_x.setCoordinate(x.getCoordinate());
 	}
 	public void setY(Coordinate y) {
-		_y = new Coordinate(y) ;
+		//_y = new Coordinate(y) ;
+		_y.setCoordinate(y.getCoordinate());
 	}
 	
 	// ***************** Administration ******************** //

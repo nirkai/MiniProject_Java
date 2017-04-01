@@ -45,7 +45,14 @@ public class Point3D extends Point2D {
 	}
 	
 	public void setZ(Coordinate z) {
-		_z = new Coordinate(z);
+		//_z = new Coordinate(z);
+		_z.setCoordinate(z.getCoordinate());
+	}
+	
+	public void setPoint(Point3D point) {
+		setX(point._x);
+		setY(point._y);
+		setZ(point._z);
 	}
 	
 	// ***************** Administration ******************** //
@@ -90,7 +97,7 @@ public class Point3D extends Point2D {
 	 * @param point
 	 * @return The distance between the two points
 	 */
-	public double distance(Point3D point){
+	public double distance(Point3D point)	{
 		return Math.sqrt( Math.pow((_x.getCoordinate() - point._x.getCoordinate()),2)
 				+ Math.pow((_y.getCoordinate() - point._y.getCoordinate()),2)
 				+ Math.pow((_z.getCoordinate() - point._z.getCoordinate()),2) );					//////////
