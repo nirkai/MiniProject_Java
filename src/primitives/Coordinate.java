@@ -38,7 +38,7 @@ public  class Coordinate implements Comparable<Coordinate>{
 	public int compareTo(Coordinate coordinate){
 		//return Double.compare(_coordinate, coordinate._coordinate);
 		double ab = Math.abs(_coordinate - coordinate.getCoordinate());
-		if (ab > 0.05) {
+		if (ab > 1e-10) {
 			return 1;
 		}
 		return 0;
