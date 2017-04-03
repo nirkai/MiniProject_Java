@@ -11,8 +11,10 @@ public class Camera {
 	// ***************** Constructors ********************** //
 	public Camera(){
 		_P0 = new Point3D(); 
-		_vUp = new Vector();
-		_vTo = new Vector();
+		_vUp = new Vector(0,1,0);
+		_vTo = new Vector(-1,0,0);
+		_vRight = new Vector(0,0,1);
+		
 	}
 	public Camera (Camera camera){
 		this(camera._P0,camera._vUp,camera._vTo);
@@ -22,6 +24,9 @@ public class Camera {
 		_vUp = new Vector(vUp);
 		_vTo = new Vector(vTo);
 		_vRight = new Vector(vUp.crossProduct(vTo));
+		_vRight.normalize();
+		_vTo.normalize();
+		_vUp.normalize();
 	}
 //	public Camera (Map<String, String> attributes(;
 
@@ -52,12 +57,12 @@ public class Camera {
 		return "Vto: " + _vTo + "\n" + "Vup: " + _vUp + "\n" + "Vright:" + _vRight + "."; 
 	}
 	// ***************** Operations ******************** //
-	public Ray constructRayThroughPixel (int Nx, int Ny,
-	 double x, double y,
-	 double screenDist,
-	 double screenWidth,
-	 double screenHeight){
-		
-	}
+//	public Ray constructRayThroughPixel (int Nx, int Ny,
+//	 double x, double y,
+//	 double screenDist,
+//	 double screenWidth,
+//	 double screenHeight){
+//		
+//	}
 
 }
