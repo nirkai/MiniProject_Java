@@ -58,12 +58,26 @@ public class Camera {
 		return "Vto: " + _vTo + "\n" + "Vup: " + _vUp + "\n" + "Vright:" + _vRight + "."; 
 	}
 	// ***************** Operations ******************** //
-//	public Ray constructRayThroughPixel (int Nx, int Ny,
-//	 double x, double y,
-//	 double screenDist,
-//	 double screenWidth,
-//	 double screenHeight){
-//		
-//	}
-
+	public Ray constructRayThroughPixel (int Nx, int Ny,
+	 double x, double y,
+	 double screenDist,
+	 double screenWidth,
+	 double screenHeight){
+		double Rx = screenWidth/Nx;
+		double Ry = screenHeight/Ny;
+		double Xscalar = CalculationOfScalar(x,Nx,Rx);
+		double yscalar = CalculationOfScalar(y,Ny,Ry);
+		Vector Pc= new Vector(0,0,-screenDist );
+		Vector V = new Vector(Xscalar,-yscalar,-screenDist);
+		Point3D point = new Point3D();
+		return new Ray(point,V);
+//		Vector Vright= new Vector(1,0,0 );
+//		Vector Pup= new Vector(0,1,0 );
+//		Vright.scale(CalculationOfScalar(x,Nx,Rx));
+//		Pup.scale(CalculationOfScalar(y,Ny,Ry));
+		
+	}
+	public double CalculationOfScalar(double Point,int Pixels,double R){
+		return (((Point-(Pixels/2))*R)-R/2);
+	}
 }
