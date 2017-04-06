@@ -67,8 +67,9 @@ public class Camera {
 		double Ry = screenHeight/Ny;
 		double Xscalar = CalculationOfScalar(x,Nx,Rx);
 		double Yscalar = CalculationOfScalar(y,Ny,Ry);
-		Vector Pc= new Vector(0,0,-screenDist );
+		//Vector Pc= new Vector(0,0,-screenDist );
 		Vector V = new Vector(Xscalar,-Yscalar,-screenDist);
+		V.normalize();
 		Point3D point = new Point3D();
 		return new Ray(point,V);
 //		Vector Vright= new Vector(1,0,0 );
