@@ -41,8 +41,9 @@ public class Vector implements Comparable<Vector> {
 	}
 	
 	public Vector(Point3D p1, Point3D p2) { // i suppose this is for tabbing the vector
-			_head = new Point3D(p2);
-			p1.subtract(this);
+			_head = new Point3D(p1);
+			p2.subtract(this);
+			_head.setPoint(p2);
 	//	else problem
 	}
 	

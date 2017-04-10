@@ -29,7 +29,7 @@ public class Ray {
 	}
 	public Ray(Point3D poo, Vector direction){
 		_POO=new Point3D(poo);
-		_direction=new Vector(direction);
+		_direction=new Vector(poo, direction.getHead());
 		_direction.normalize();
 	}
 	// ***************** Getters/Setters ********************** //
