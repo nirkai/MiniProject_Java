@@ -26,19 +26,23 @@ public class Plane extends Geometries implements FlatGeometry {
 	}
 	// ***************** Getters/Setters ********************** //
 	public Vector getNormal(Point3D point){
-		_normal = new Vector(point);
-		_normal.normalize();
-		return _normal;
+		/*_normal = new Vector(point);
+		_normal.normalize();*/
+		Vector normal = new Vector(_normal);
+		Point3D point3d = new Point3D(point);
+		point3d.subtract(normal);
+		normal.setHead(point3d);
+		return normal;
 	}
 	public Point3D getQ(){
 		return _Q;   ///
 	}
 	public void setNormal(Vector normal){
-		_normal = normal;
+		_normal.setHead(normal.getHead());
 		_normal.normalize();
 	}
 	public void setQ(Point3D d){
-		_Q = d;
+		_Q.setPoint(d);
 	}
 	// ***************** Operations ******************** //
 	//public List<Point3D> FindIntersections(Ray ray);

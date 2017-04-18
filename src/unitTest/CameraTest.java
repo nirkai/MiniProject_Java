@@ -10,19 +10,20 @@ public class CameraTest {
 
 	@Test
 	public void test() {
-		/*Point3D P0 = new Point3D();
+		/*
+		Point3D P0 = new Point3D();
 		Vector rVector = new Vector(50,-50,-100);
 		rVector.normalize();
-		P0.subtract(rVector);
-		Ray ray = new Ray(P0, rVector);
+		//P0.subtract(rVector);
+		Ray ray1 = new Ray(P0, rVector);
 		
-		Camera camera = new Camera();
-		Ray cRay = camera.constructRayThroughPixel(3, 3, 3, 3, 100, 150, 150);
+		Camera camera1 = new Camera();
+		Ray cRay = camera1.constructRayThroughPixel(3, 3, 3, 3, 100, 150, 150);
 		
-		int poo = ray.getPOO().compareTo(cRay.getPOO());
+		int poo = ray1.getPOO().compareTo(cRay.getPOO());
 		assertEquals(0, poo, 0);
 		
-		int direction = ray.getDirection().compareTo(cRay.getDirection());
+		int direction = ray1.getDirection().compareTo(cRay.getDirection());
 		assertEquals(0, direction, 0);
 		*/
 		
