@@ -47,7 +47,13 @@ public class Triangle extends Geometries implements FlatGeometry {
 	// ***************** Operations ******************** //
 	public Vector getNormal(Point3D point){
 		// TODO
-		return null;
+		Vector AB = new Vector(_p1, _p2);
+		Vector AC = new Vector(_p1, _p3);
+		Vector normal = AB.crossProduct(AC);
+		Point3D point3d = new Point3D(point);
+		point3d.subtract(normal);
+		normal.setHead(point3d);
+		return normal;
 	}
 	@Override
 	public List<Point3D> FindIntersections(Ray ray) {
