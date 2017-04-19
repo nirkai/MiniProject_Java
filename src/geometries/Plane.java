@@ -17,8 +17,9 @@ public class Plane extends Geometries implements FlatGeometry {
 		_Q = new Point3D();
 	}
 	public Plane (Plane plane){
-		_normal = new Vector(plane._normal);
-		_Q = new Point3D(plane._Q);
+	//	_normal = new Vector(plane._normal);
+	//	_Q = new Point3D(plane._Q);
+		this(plane._normal, plane._Q);
 	}
 	public Plane (Vector normal, Point3D q){
 		_normal = new Vector(normal);

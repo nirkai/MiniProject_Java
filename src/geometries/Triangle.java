@@ -8,14 +8,16 @@ public class Triangle extends Geometries implements FlatGeometry {
 	private Point3D _p1;
 	private Point3D _p2;
 	private Point3D _p3;
+	
 	// ***************** Constructors ********************** //
+	
 	public Triangle(){
-		
-	}
-	public Triangle(Triangle triangle){
 		_p1 = new Point3D();
 		_p2 = new Point3D();
 		_p3 = new Point3D();
+	}
+	public Triangle(Triangle triangle){
+		this(triangle._p1, triangle._p2, triangle._p3);
 	}
 	public Triangle(Point3D p1, Point3D p2, Point3D p3){
 		_p1 = new Point3D(p1);
@@ -45,14 +47,17 @@ public class Triangle extends Geometries implements FlatGeometry {
 		_p3.setPoint(p3);
 	}
 	// ***************** Operations ******************** //
+	@Override
 	public Vector getNormal(Point3D point){
 		// TODO
 		Vector AB = new Vector(_p1, _p2);
 		Vector AC = new Vector(_p1, _p3);
 		Vector normal = AB.crossProduct(AC);
-		Point3D point3d = new Point3D(point);
-		point3d.subtract(normal);
-		normal.setHead(point3d);
+		normal.normalize();
+		normal.scale(-1);
+	//	Point3D point3d = new Point3D(point);
+	//	point3d.subtract(normal);
+	//	normal.setHead(point3d);
 		return normal;
 	}
 	@Override
