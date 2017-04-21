@@ -17,19 +17,21 @@ public class Ray {
 	// ***************** Constructors ********************** //
 	
 	public Ray(){
-		_POO=new  Point3D();
-		_direction=new Vector();
+		/*_POO = new  Point3D();
+		_direction = new Vector();*/
+		this(new Point3D(), new Vector());
 	}
 	
 	public Ray(Ray ray){
-		_POO = new Point3D(ray._POO);
-		_direction=new Vector(ray._direction);
-	//	_direction.normalize();    ////////////////
+		/*_POO = new Point3D(ray._POO);
+		_direction = new Vector(ray._direction);*/
 		
+		this(ray._POO, ray._direction);		
 	}
+	
 	public Ray(Point3D poo, Vector direction){
-		_POO=new Point3D(poo);
-		_direction=new Vector(direction.getHead());
+		_POO = new Point3D(poo);
+		_direction = new Vector(direction.getHead());
 		//_direction.normalize();
 	}
 	// ***************** Getters/Setters ********************** //

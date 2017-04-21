@@ -56,7 +56,7 @@ public class Camera {
 	// ***************** Administration ********************** //
 	@Override
 	public String toString(){
-		return "Vto: " + _vTo.toString() + "\n" + "Vup: " + _vUp.toString() + "\n" + "Vright:" + _vRight.toString() + "."; 
+		return "Vto: " + _vTo + "\n" + "Vup: " + _vUp + "\n" + "Vright:" + _vRight + "."; 
 	}
 	// ***************** Operations ******************** //
 	public Ray constructRayThroughPixel (int Nx, int Ny,
