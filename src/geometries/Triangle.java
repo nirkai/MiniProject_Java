@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Map;
 
 import primitives.*;
+import sun.net.www.content.text.plain;
 
 public class Triangle extends Geometries implements FlatGeometry {
 	private Point3D _p1;
@@ -62,7 +63,9 @@ public class Triangle extends Geometries implements FlatGeometry {
 	}
 	@Override
 	public List<Point3D> FindIntersections(Ray ray) {
-		// TODO Auto-generated method stub
+		Vector normal = new Vector(this.getNormal(_p1));
+		Plane plane = new Plane(normal,_p3);
+		p
 		return null;
 	}
 }
