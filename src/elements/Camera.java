@@ -54,11 +54,12 @@ public class Camera {
 		return _vRight;
 	}
 	// ***************** Administration ********************** //
+	@Override
 	public String toString(){
-		return "Vto: " + _vTo + "\n" + "Vup: " + _vUp + "\n" + "Vright:" + _vRight + "."; 
+		return "Vto: " + _vTo.toString() + "\n" + "Vup: " + _vUp.toString() + "\n" + "Vright:" + _vRight.toString() + "."; 
 	}
 	// ***************** Operations ******************** //
-	/*public Ray constructRayThroughPixel (int Nx, int Ny,
+	public Ray constructRayThroughPixel (int Nx, int Ny,
 	 double x, double y,
 	 double screenDist,
 	 double screenWidth,
@@ -69,7 +70,7 @@ public class Camera {
 		double Yscalar = CalculationOfScalar(y,Ny,Ry);
 		//Vector Pc= new Vector(0,0,-screenDist );
 		Vector V = new Vector(Xscalar,-Yscalar,-screenDist);
-		V.normalize();
+		//V.normalize();
 		Point3D point = new Point3D();
 		return new Ray(point,V);
 //		Vector Vright= new Vector(1,0,0 );
@@ -79,10 +80,10 @@ public class Camera {
 		
 	}
 	public double CalculationOfScalar(double Point,int Pixels,double R){
-		return (((Point-(Pixels/2))*R)-R/2);
-	}*/
+		return ( ((Point - (Pixels/2.0)) * R) - R/2.0 );
+	}
 	
-	public Ray constructRayThroughPixel (int Nx, int Ny,
+	/*public Ray constructRayThroughPixel (int Nx, int Ny,
 			 double x, double y,
 			 double screenDist,
 			 double screenWidth,
@@ -95,7 +96,7 @@ public class Camera {
 				Vector vY = pixelCalc(Ny, y, screenHeight, _vUp);
 				vX.subtract(vY);
 				Pc.add(vX);
-				Vector vector = new Vector(_P0, Pc);
+				Vector vector = new Vector(Pc);
 				return new Ray(_P0, vector);
 				
 			}
@@ -110,5 +111,5 @@ public class Camera {
 				vTo.scale(screenDist);
 				p0.add(vTo);
 				return new Point3D(p0);
-			}
+			}*/
 }

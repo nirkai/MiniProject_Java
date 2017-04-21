@@ -24,13 +24,13 @@ public class Ray {
 	public Ray(Ray ray){
 		_POO = new Point3D(ray._POO);
 		_direction=new Vector(ray._direction);
-		_direction.normalize();    ////////////////
+	//	_direction.normalize();    ////////////////
 		
 	}
 	public Ray(Point3D poo, Vector direction){
 		_POO=new Point3D(poo);
-		_direction=new Vector(poo, direction.getHead());
-		_direction.normalize();
+		_direction=new Vector(direction.getHead());
+		//_direction.normalize();
 	}
 	// ***************** Getters/Setters ********************** //
 	public void setPOO(Point3D _POO){
