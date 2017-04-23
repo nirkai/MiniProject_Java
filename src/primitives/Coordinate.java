@@ -16,7 +16,7 @@ public  class Coordinate implements Comparable<Coordinate>{
 	
 	// ***************** Constructors ********************** //
 	public Coordinate() {
-		_coordinate = 0;
+		_coordinate = 0.0;
 	}
 	public Coordinate(double coordinate) {
 		_coordinate = coordinate;

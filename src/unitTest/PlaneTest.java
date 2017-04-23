@@ -28,7 +28,7 @@ public class PlaneTest {
 		List<Point3D> intersectionPointsPlane = new ArrayList<Point3D>();
 		List<Point3D> intersectionPointsPlane2 = new ArrayList<Point3D>();
 		
-//		System.out.println("Camera:\n" + camera);
+		System.out.println("Camera:\n" + camera);
 		for (int i = 0; i < HEIGHT; i++){
 			for (int j = 0; j < WIDTH; j++){
 				rays[i][j] = camera.constructRayThroughPixel(
@@ -45,11 +45,11 @@ public class PlaneTest {
 		}
 		assertTrue(intersectionPointsPlane.size() == 9);
 		assertTrue(intersectionPointsPlane2.size() == 9);
-//		for (Point3D iPoint: intersectionPointsPlane)
-//			System.out.println(iPoint);
-//		System.out.println("---");
-//		for (Point3D iPoint: intersectionPointsPlane2)
-//			System.out.println(iPoint);
+		for (Point3D iPoint: intersectionPointsPlane)
+			System.out.println(iPoint);
+		System.out.println("---");
+		for (Point3D iPoint: intersectionPointsPlane2)
+			System.out.println(iPoint);
 	}
 
 }

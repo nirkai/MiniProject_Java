@@ -11,9 +11,9 @@ public class Camera {
 	// ***************** Constructors ********************** //
 	public Camera(){
 		_P0 = new Point3D();
-		_vRight = new Vector(1,0,0);
-		_vUp = new Vector(0,1,0);
-		_vTo = new Vector(0,0,-1);
+		_vRight = new Vector(1.0,0.0,0.0);
+		_vUp = new Vector(0.0,1.0,0.0);
+		_vTo = new Vector(0.0,0.0,-1.0);
 	
 		
 	}
@@ -80,7 +80,7 @@ public class Camera {
 		
 	}
 	public double CalculationOfScalar(double Point,int Pixels,double R){
-		return ( ((Point - (Pixels/2.0)) * R) - R/2.0 );
+		return ( ((Point - (Pixels/2.0)) * R) + R/2.0 );
 	}
 	
 	/*public Ray constructRayThroughPixel (int Nx, int Ny,

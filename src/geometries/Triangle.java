@@ -65,7 +65,7 @@ public class Triangle extends Geometries implements FlatGeometry {
 	public List<Point3D> FindIntersections(Ray ray) {
 		Vector normal = new Vector(this.getNormal(_p1));
 		Plane plane = new Plane(normal,_p3);
-		p
+		
 		return null;
 	}
 }

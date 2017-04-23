@@ -91,8 +91,9 @@ public class Vector implements Comparable<Vector> {
 	
 	@Override
 	public String toString() {
-		return String.format("(s%, %s, %s)\n", 
-				getX(), getY(), getZ());
+		/*return String.format("(s%, %s, %s)\n", 
+				getX(), getY(), getZ());*/
+		return _head.toString();
 	}
 	// ***************** Operations ******************** //
 	/**
