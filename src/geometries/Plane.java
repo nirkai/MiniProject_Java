@@ -57,6 +57,7 @@ public class Plane extends Geometries implements FlatGeometry {
 		
 		Vector vector = new Vector(ray.getPOO(), _Q);
 		Vector vector2 = new Vector(ray.getDirection());
+		List<Point3D> pArrayList = new ArrayList<Point3D>();
 		
 		double t = - vector.dotProduct(_normal) / vector2.dotProduct(_normal);
 		if (t >= 0) {
@@ -64,11 +65,9 @@ public class Plane extends Geometries implements FlatGeometry {
 			vector.setHead(_normal.getHead());
 			vector.scale(t);
 			P.add(vector);
-			List<Point3D> pArrayList = new ArrayList<Point3D>();
 			pArrayList.add(P);
-			return pArrayList;
 		}
 
-		return null;
+		return pArrayList;
 	}
 }

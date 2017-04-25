@@ -1,9 +1,10 @@
 package geometries;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+
 import primitives.*;
-import sun.net.www.content.text.plain;
 
 public class Triangle extends Geometries implements FlatGeometry {
 	private Point3D _p1;
@@ -64,8 +65,45 @@ public class Triangle extends Geometries implements FlatGeometry {
 	@Override
 	public List<Point3D> FindIntersections(Ray ray) {
 		Vector normal = new Vector(this.getNormal(_p1));
+		normal.normalize();
 		Plane plane = new Plane(normal,_p3);
+		List<Point3D> tArrayList = plane.FindIntersections(ray);
+		if (tArrayList.isEmpty()) {
+			return tArrayList;
+		}
 		
-		return null;
+		if (checkInstructions(ray.getPOO(), tArrayList.get(0))){
+			return tArrayList;
+		}
+		
+		tArrayList = new ArrayList<>();
+		return tArrayList;
+		
+	}
+	private boolean checkInstructions(Point3D rayPoo, Point3D p0) {
+
+		Vector vector = new Vector(p0, rayPoo);
+		Vector vProjector[] = new Vector[3];
+		vProjector[0] = checkSign(_p1, _p2, p0);
+		vProjector[1] = checkSign(_p2, _p3, p0);
+		vProjector[2] = checkSign(_p3, _p1, p0);
+		double[] sign = new double[3];
+		for (int i = 0; i < vProjector.length; i++) {
+			vProjector[i].normalize();
+			vProjector[i].scale(-1);
+			sign[i] = vector.dotProduct(vProjector[i]);	
+		}
+
+		if ((sign[0] > 0 && sign[1] > 0 && sign[2] > 0)
+			|| (sign[0] <= 0 && sign[1] <= 0 && sign[2] <= 0)){
+			return true;
+		}
+		return false;
+		
+	}
+	private Vector checkSign(Point3D vertex1, Point3D vertex2, Point3D p0) {
+		Vector v1 = new Vector(vertex1,p0);
+		Vector v2 = new Vector(vertex2,p0);
+		return v1.crossProduct(v2);
 	}
 }
