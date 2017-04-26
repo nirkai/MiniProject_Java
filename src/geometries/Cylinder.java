@@ -14,23 +14,25 @@ public class Cylinder extends RadialGeometry{
 	// ***************** Constructors ********************** //
 	
 	public Cylinder(){
-		
+		this(0, new Point3D(), new Vector());
 	}
 	public Cylinder(Cylinder cylinder){
-		
+		this(cylinder._radius, cylinder._axisPoint, cylinder._axisDirection);
 	}
 	public Cylinder(double radius, Point3D axisPoint, Vector axisDirection){
-		
+		_radius = radius;
+		_axisPoint = new Point3D(axisPoint);
+		_axisDirection = new Vector(axisDirection);
 	}
 	// ***************** Getters/Setters ********************** //
 	
 	public Point3D getAxisPoint(){
 		//TODO
-		return null;
+		return _axisPoint;
 	}
 	public Vector getAxisDirection(){
 		//TODO
-		return null;
+		return _axisDirection;
 	}
 	public void setAxisPoint(Point3D axisPoint){
 		_axisPoint.setPoint(axisPoint);

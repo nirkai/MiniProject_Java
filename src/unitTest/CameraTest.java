@@ -11,7 +11,7 @@ public class CameraTest {
 	@Test
 	public void test() {
 		
-		/*Point3D P0 = new Point3D();
+		Point3D P0 = new Point3D();
 		Vector rVector = new Vector(100,-100,-100);
 		rVector.normalize();
 		//P0.subtract(rVector);
@@ -24,7 +24,7 @@ public class CameraTest {
 	//	assertEquals(0, poo, 0);
 		
 		int direction = ray1.getDirection().compareTo(cRay.getDirection());
-		assertEquals(0, direction, 0);*/
+		assertEquals(0, direction, 0);
 		
 		// ***************************************************************************** //
 		

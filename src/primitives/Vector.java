@@ -32,6 +32,10 @@ public class Vector implements Comparable<Vector> {
 		_head = new Point3D(head);
 	}
 	
+	/**
+	 * copy constructor
+	 * @param vector
+	 */
 	public Vector(Vector vector) {
 		this(vector._head);
 	}
@@ -40,7 +44,14 @@ public class Vector implements Comparable<Vector> {
 		_head = new Point3D(xHead,yHead,zHead);
 	}
 	
-	public Vector(Point3D p1, Point3D p2) { // i suppose this is for tabbing the vector
+	/**
+	 * constructor for shifted vector.
+	 * get a new vector from two points of Point3D by  one from other.
+	 * for ex - V = p1 - p2 => the vector is: p2->p1 
+	 * @param p1 : Point3D, the head of the vector
+	 * @param p2 : Point3D, this value is not part of the vector. ned just for calculate the vector
+	 */
+	public Vector(Point3D p1, Point3D p2) { 
 			/*_head = new Point3D(p1);
 			p2.subtract(this);
 			_head.setPoint(p2);*/
@@ -91,8 +102,6 @@ public class Vector implements Comparable<Vector> {
 	
 	@Override
 	public String toString() {
-		/*return String.format("(s%, %s, %s)\n", 
-				getX(), getY(), getZ());*/
 		return _head.toString();
 	}
 	// ***************** Operations ******************** //
@@ -163,7 +172,7 @@ public class Vector implements Comparable<Vector> {
 				+ getZ() * vector.getZ() );
 	}
 	
-	
+/*	
 	// *************** internal Functions ****************** //
 	private double coordinate(int num) {
 		switch (num) {
@@ -176,5 +185,5 @@ public class Vector implements Comparable<Vector> {
 		default:
 			return 0; ///
 		}
-	}
+	}*/
 }
