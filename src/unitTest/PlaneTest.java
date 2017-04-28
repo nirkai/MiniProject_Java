@@ -14,7 +14,11 @@ public class PlaneTest {
 	
 	@Test
 	public void testIntersectionPoints(){
-
+		
+		Plane p = new Plane(new Vector(3,4,-2), new Point3D(15, 2, 4));
+		Ray r = new Ray(new Point3D(), new Vector(5,2,4));
+		List<Point3D> iL = p.FindIntersections(r);
+		
 		final int WIDTH = 3;
 		final int HEIGHT = 3;
 		Ray[][] rays = new Ray [HEIGHT][WIDTH];

@@ -13,6 +13,13 @@ public class SphereTest {
 
 	@Test
 	public void testIntersectionPoints(){
+		
+		Ray r = new Ray(new Point3D(), new Vector(100,80,150));
+		Sphere s = new Sphere(180, new Point3D(200,50,0));
+		List<Point3D> Li = s.FindIntersections(r);
+		double d = r.getPOO().distance(Li.get(0));
+		double d2 = r.getPOO().distance(Li.get(1));
+		
 		final int WIDTH = 3;
 		final int HEIGHT = 3;
 		Ray[][] rays = new Ray [HEIGHT][WIDTH];
