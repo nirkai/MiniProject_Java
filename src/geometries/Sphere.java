@@ -58,7 +58,7 @@ public class Sphere extends RadialGeometry{
 			double t1 = t_m - t_h;
 			double t2 = t_m + t_h;
 			
-			V.normalize();
+			/*V.normalize();
 			V.scale(t1);
 			P0.add(V);
 			Point3D P1 = new Point3D(P0);
@@ -68,19 +68,33 @@ public class Sphere extends RadialGeometry{
 			V.scale(t2);
 			P0.setPoint(ray.getPOO());
 			P0.add(V);
-			Point3D P2 = new Point3D(P0);
+			Point3D P2 = new Point3D(P0);*/
+			
+			Point3D p1 = intersecPoint(ray, t1);
+			Point3D p2 = intersecPoint(ray, t2);
+			
+			
 			if (t1 > 0) {
 				
-				pArrayList.add(P1);
+				pArrayList.add(p1);
 			}
 			if (t2 > 0) {
 				
-				pArrayList.add(P2);
+				pArrayList.add(p2);
 			}
 			return pArrayList;
 		}
 		
 		return pArrayList;
+	}
+	
+	private  Point3D intersecPoint(Ray ray, double t) {
+		Point3D P0 = new Point3D(ray.getPOO());
+		Vector V = new Vector(ray.getDirection());
+		V.normalize();
+		V.scale(t);
+		P0.add(V);
+		return new Point3D(P0);
 	}
 	
 	public Vector getNormal(Point3D point){

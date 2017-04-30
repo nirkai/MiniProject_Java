@@ -24,7 +24,7 @@ public class Camera {
 		_P0 = new Point3D(P0);
 		_vUp = new Vector(vUp);
 		_vTo = new Vector(vTo);
-		_vRight = vUp.crossProduct(vTo);
+		_vRight = vTo.crossProduct(vUp);
 		_vRight.normalize();
 		_vTo.normalize();
 		_vUp.normalize();

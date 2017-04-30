@@ -69,7 +69,7 @@ public class Point3D extends Point2D {
 	
 	@Override
 	public String toString() {
-		return String.format("(X = %.2f, Y = %.2f, Z = %.2f)\n", _x.getCoordinate(), _y.getCoordinate(), _z.getCoordinate());
+		return String.format("(X = %.2f, Y = %.2f, Z = %.2f)", _x.getCoordinate(), _y.getCoordinate(), _z.getCoordinate());
 	}
 	
 	// ***************** Operations ******************** //
