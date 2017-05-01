@@ -54,9 +54,11 @@ public class Triangle extends Geometries implements FlatGeometry {
 		// TODO
 		Vector AB = new Vector(_p1, _p2);
 		Vector AC = new Vector(_p1, _p3);
-		Vector normal = AB.crossProduct(AC);
+		//Vector normal = AB.crossProduct(AC);
+		Vector normal = AC.crossProduct(AB);
 		normal.normalize();
-		normal.scale(-1);
+		//normal.scale(-1);
+		
 	//	Point3D point3d = new Point3D(point);
 	//	point3d.subtract(normal);
 	//	normal.setHead(point3d);
@@ -68,16 +70,13 @@ public class Triangle extends Geometries implements FlatGeometry {
 		normal.normalize();
 		Plane plane = new Plane(normal,_p3);
 		List<Point3D> tArrayList = plane.FindIntersections(ray);
-		if (tArrayList.isEmpty()) {
-			return tArrayList;
+		if (tArrayList.size() > 0) {
+			if (checkInstructions(ray.getPOO(), tArrayList.get(0))){
+				return tArrayList;
+			}
 		}
-		
-		if (checkInstructions(ray.getPOO(), tArrayList.get(0))){
-			return tArrayList;
-		}
-		
-		tArrayList = new ArrayList<>();
-		return tArrayList;
+		return new ArrayList<>();
+		//return tArrayList;
 		
 	}
 	private boolean checkInstructions(Point3D rayPoo, Point3D p0) {
@@ -90,7 +89,7 @@ public class Triangle extends Geometries implements FlatGeometry {
 		double[] sign = new double[3];
 		for (int i = 0; i < vProjector.length; i++) {
 			vProjector[i].normalize();
-			vProjector[i].scale(-1);
+			//vProjector[i].scale(-1);
 			sign[i] = vector.dotProduct(vProjector[i]);	
 		}
 
@@ -104,6 +103,6 @@ public class Triangle extends Geometries implements FlatGeometry {
 	private Vector checkSign(Point3D vertex1, Point3D vertex2, Point3D p0) {
 		Vector v1 = new Vector(vertex1,p0);
 		Vector v2 = new Vector(vertex2,p0);
-		return v1.crossProduct(v2);
+		return v2.crossProduct(v1);
 	}
 }
