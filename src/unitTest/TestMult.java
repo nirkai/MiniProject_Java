@@ -77,6 +77,31 @@ public class TestMult {
 		
 		
 		
+		
+		// *********** More Tests	****************//
+		
+		System.out.println("Test09: Vector Dot product test");
+        Vector v1 = new Vector(3.5, -5, 10);
+        Vector v2 = new Vector(2.5, 7, 0.5);
+        assertTrue(Double.compare(v1.dotProduct(v2), (8.75 + -35 + 5)) == 0);
+        
+        Vector V1 = new Vector(2, 2, 2);
+        double a =-1;
+        V1.scale(a);
+        Vector VResult = new Vector(-2, -2, -2);
+        assertEquals(V1.toString(), VResult.toString());
+        
+        V1 = new Vector(-2, 4, 0);
+        Vector V2 = new Vector(1, -3, 5);
+        Vector V3 = new Vector(3, 2, 1);
+        Vector VE = new Vector( V1.crossProduct(V2));
+        V2.crossProduct(V3);
+        System.out.println(V1);
+        System.out.println(V2);
+        VResult = new Vector(20, 10, 2);
+        assertEquals(VE.toString(), VResult.toString());
+        
+        
 	}
 
 }

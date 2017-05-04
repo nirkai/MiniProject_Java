@@ -90,6 +90,84 @@ public class TestAdd {
 		assertEquals(0, p2.compareTo(p22), 0);
 		
 		
+	//	*************** More Tests *********************//
+		System.out.println("Test01: Point3D compareTo");
+        Point3D point3D = new Point3D(2.0, -7.5, 9.25);
+        Point3D instance = new Point3D(2.0, -7.5, 9.25);
+        int expResult = 0;
+        int result = instance.compareTo(point3D);
+        assertEquals(expResult, result);
+        
+        /*System.out.println("Test02: Point3D toString");
+        Point3D instance1 = new Point3D(1.123, 2.569, 3.999);
+        String expResult1 = "(1.12, 2.57, 4.00)";
+        String result1 = instance1.toString();
+        assertEquals(expResult1, result1);*/
+        
+        System.out.println("Test03: Point3D add");
+        Vector vector = new Vector(1.25, -2.0, 3.0);
+        Point3D instance2 = new Point3D(4.75, -5.0, 6.0);
+        instance2.add(vector);
+        assertTrue(instance2.compareTo(new Point3D(6.0, -7.0, 9.0)) == 0);
+        
+        System.out.println("Test04: Point3D subtract");
+        Vector vector4 = new Vector(1.0, 2.0, 3.0);
+        Point3D instance4 = new Point3D(4.0, 5.0, 6.0);
+        instance4.subtract(vector4);
+        assertTrue(instance4.compareTo(new Point3D(3.0, 3.0, 3.0)) == 0);
+        
+        System.out.println("Test05: Point3D distance");
+        Point3D point5 = new Point3D(-20.5, 55, 9.25);
+        Point3D instance5 = new Point3D(75, -10, -100);
+        double expResult5 = 159.0;
+        double result5 = instance5.distance(point5);
+        assertEquals(expResult5, result5, 0.01);
+        
+        
+        //***************** Vector Tests ************************//
+        
+        System.out.println("Test06: Vector Add test");
+        Vector v1 = new Vector(1.0, 1.0, 1.0);
+        Vector v2 = new Vector(-1.0, -1.0, -1.0);
+        v1.add(v2);
+        assertTrue(v1.compareTo(new Vector(0.0, 0.0, 0.0)) == 0);
+        v2.add(v1);
+        assertTrue(v2.compareTo(v2) == 0);
+        
+        System.out.println("Test07: Vector Substruct test");
+        v1 = new Vector(1.0, 1.0, 1.0);
+        v2 = new Vector(-1.0, -1.0, -1.0);
+        v1.subtract(v2);
+        assertTrue(v1.compareTo(new Vector(2.0, 2.0, 2.0)) == 0);
+        v2.subtract(v1);
+        assertTrue(v2.compareTo(new Vector(-3.0, -3.0, -3.0)) == 0);
+        
+        System.out.println("Test08: Vector Scaling test");
+
+        v1 = new Vector(1.0, 1.0, 1.0);
+        v1.scale(1);
+        assertTrue(v1.compareTo(v1) == 0);
+        v1.scale(2);
+        assertTrue(v1.compareTo(new Vector(2.0, 2.0, 2.0)) == 0);
+        v1.scale(-2);
+        assertTrue(v1.compareTo(new Vector(-4.0, -4.0, -4.0)) == 0);
+        
+        
+        Vector V1 = new Vector(2, 2, 2);
+        Vector V2 = new Vector(3,3,3);
+        System.out.println(V1);
+        V1.add(V2);
+        Vector V5 = new Vector(5,5,5);
+        System.out.println(V1.toString());
+        assertEquals(V1.toString(), V5.toString());
+        
+        V1 = new Vector(2, 2, 2);
+        V2 = new Vector(3,3,3);
+        System.out.println(V1);
+        V1.subtract(V2);
+        V5 = new Vector(-1,-1,-1);
+        System.out.println(V1.toString());
+        assertEquals(V1.toString(), V5.toString());
 	}
 
 }
