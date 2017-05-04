@@ -84,16 +84,7 @@ public class Vector implements Comparable<Vector> {
 		_head.setY(head.getY());
 		_head.setZ(head.getZ());
 	}
-/*	// Setters for the coordinates of the vector head
-	public void setX(double x) {
-		_head.getX().setCoordinate(x);
-	}
-	public void setY(double y) {
-		_head.getY().setCoordinate(y);
-	}
-	public void setZ(double z) {
-		_head.getZ().setCoordinate(z);
-	}*/
+
 	// ***************** Administration ******************** //
 	@Override
 	public int compareTo(Vector vector){   //////////
@@ -172,18 +163,4 @@ public class Vector implements Comparable<Vector> {
 				+ getZ() * vector.getZ() );
 	}
 	
-/*	
-	// *************** internal Functions ****************** //
-	private double coordinate(int num) {
-		switch (num) {
-		case 1:
-			return _head._x.getCoordinate();
-		case 2:
-			return _head._y.getCoordinate();
-		case 3:
-			return _head._z.getCoordinate();
-		default:
-			return 0; ///
-		}
-	}*/
 }
