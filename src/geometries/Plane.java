@@ -8,7 +8,7 @@ import primitives.*;
 //import com.sun.javafx.geom.Vec2d;
 //import sun.net.www.content.text.plain;
 
-public class Plane extends Geometries implements FlatGeometry {
+public class Plane extends Geometry implements FlatGeometry {
 	
 	private Vector _normal;
 	private Point3D _Q;

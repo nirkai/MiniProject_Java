@@ -6,7 +6,7 @@ import java.util.Map;
 
 import primitives.*;
 
-public class Triangle extends Geometries implements FlatGeometry {
+public class Triangle extends Geometry implements FlatGeometry {
 	private Point3D _p1;
 	private Point3D _p2;
 	private Point3D _p3;
