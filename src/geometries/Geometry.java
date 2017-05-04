@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.util.List;
 
 
-public abstract class Geometries {
+public abstract class Geometry {
 //	private Material _material = new Material();
 	private double _nShininess = 1;
 	private Color _emmission = new Color(0, 0, 0);
