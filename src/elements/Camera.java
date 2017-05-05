@@ -1,4 +1,4 @@
-xpackage elements;
+package elements;
 import primitives.*;
 
 public class Camera {
