@@ -33,16 +33,19 @@ public class Camera {
 
 	// ***************** Getters/Setters ********************** //
 	public Vector get_vUp(){
-		return _vUp;
+		return new Vector(_vUp);
 	}
 	public void  set_vUp(Vector vUp){
 		_vUp.setHead(vUp.getHead());
 	}
 	public Vector get_vTo(){
-		return _vTo;
+		return new Vector(_vTo);
 	}
 	public void set_vTo(Vector vTo){
 		_vTo.setHead(vTo.getHead());
+	}
+	public Vector get_vRight(){
+		return new Vector(_vRight);
 	}
 	public Point3D getP0(){
 		return _P0;
@@ -50,9 +53,7 @@ public class Camera {
 	public void setP0(Point3D P0){
 		_P0.setPoint(P0);
 	}
-	public Vector get_vRight(){
-		return _vRight;
-	}
+	
 	// ***************** Administration ********************** //
 	@Override
 	public String toString(){

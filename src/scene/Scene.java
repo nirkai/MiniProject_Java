@@ -1,7 +1,5 @@
 package scene;
 
-import primitives.*;
-import geometries.*;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,7 +7,7 @@ import java.util.List;
 import elements.AmbientLight;
 import elements.Camera;
 //import elements.LightSource;
-//import geometries.Geometry;
+import geometries.Geometry;
 public class Scene
 {
 	private Color _background;

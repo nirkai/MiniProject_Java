@@ -1,5 +1,7 @@
 package primitives;
 
+import com.sun.javafx.scene.traversal.Direction;
+
 /**
  * This class take care of the rays. 
  * This is a vector that does not necessarily come from the beginning of the contractions
@@ -36,10 +38,11 @@ public class Ray {
 	}
 	// ***************** Getters/Setters ********************** //
 	public void setPOO(Point3D _POO){
-		_POO=new Point3D(_POO);
+		_POO.setPoint(_POO);
 	}
-	public void setDirection(Vector _direction){
-		_direction=new Vector(_direction);
+	public void setDirection(Vector direction){
+		//_direction=new Vector(_direction);
+		_direction.setHead(direction.getHead());
 	}
 	public Vector getDirection(){
 		return _direction;
