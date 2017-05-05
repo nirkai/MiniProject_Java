@@ -65,7 +65,7 @@ public class Vector implements Comparable<Vector> {
 	// ***************** Getters/Setters ********************** //
 	
 	public Point3D getHead() {
-		return _head;
+		return new Point3D(_head);
 	}
 	// Getters for the coordinates of the vector head
 	public double getX() {
@@ -80,9 +80,10 @@ public class Vector implements Comparable<Vector> {
 	
 	public void setHead(Point3D head) {
 		//_head = new Point3D(head);
-		_head.setX(head.getX());
+		/*_head.setX(head.getX());
 		_head.setY(head.getY());
-		_head.setZ(head.getZ());
+		_head.setZ(head.getZ());*/
+		_head.setPoint(head);
 	}
 
 	// ***************** Administration ******************** //

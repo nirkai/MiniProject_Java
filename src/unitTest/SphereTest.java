@@ -2,6 +2,7 @@ package unitTest;
 
 import primitives.*;
 import geometries.*;
+import javafx.scene.shape.SVGPath;
 import elements.*;
 import java.util.List;
 import java.util.ArrayList;
@@ -19,6 +20,8 @@ public class SphereTest {
 		List<Point3D> Li = s.FindIntersections(r);
 		double d = r.getPOO().distance(Li.get(0));
 		double d2 = r.getPOO().distance(Li.get(1));
+		Vector sv = new Vector(Li.get(0));
+		double sum = sv.dotProduct(new Vector(1, 1, 1));
 		
 		final int WIDTH = 3;
 		final int HEIGHT = 3;

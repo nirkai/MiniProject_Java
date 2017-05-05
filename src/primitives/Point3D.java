@@ -41,7 +41,7 @@ public class Point3D extends Point2D {
 	// ***************** Getters/Setters ********************** //
 	
 	public Coordinate getZ() {
-		return _z;
+		return new Coordinate(_z);
 	}
 	
 	public void setZ(Coordinate z) {

@@ -52,12 +52,22 @@ public class Scene
 	public void setAmbientLight(AmbientLight ambientLight){
 		_ambientLight = new AmbientLight(ambientLight);
 	}
-	/*public void setCamera(Camera camera);
-	public void setSceneName(String sceneNAme);
-	public void setScreenDistance(double screenDistance);
+	public void setCamera(Camera camera){
+		_camera = new Camera(camera);
+	}
+	public void setSceneName(String sceneNAme){
+		_sceneName = sceneNAme;
+	}
+	public void setScreenDistance(double screenDistance){
+		_screenDistance = screenDistance;
+	}
 	//***************** Operations ******************** //
-	public void addGeometry(Geometry geometry);
-	public Iterator<Geometry> getGeometriesIterator();
-	public void addLight(LightSource light);
-	public Iterator<LightSource> getLightsIterator();*/
+	public void addGeometry(Geometry geometry){
+		_geometries.add(geometry);
+	}
+	public Iterator<Geometry> getGeometriesIterator(){
+		return _geometries.iterator();
+	}
+//	public void addLight(LightSource light);
+//	public Iterator<LightSource> getLightsIterator();
 }

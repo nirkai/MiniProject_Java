@@ -33,10 +33,10 @@ public  class Point2D implements Comparable<Point2D> {
 	// ***************** Getters/Setters ********************** //
 	
 	public Coordinate getX() {
-		return _x;
+		return new Coordinate(_x);
 	}
 	public Coordinate getY() {
-		return _y;
+		return new Coordinate(_y);
 		
 	}
 	public void setX(Coordinate x) {
