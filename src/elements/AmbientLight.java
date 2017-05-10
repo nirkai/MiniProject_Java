@@ -12,7 +12,6 @@ public class AmbientLight extends Light	{
 		super();
 	}
 	public AmbientLight(AmbientLight aLight){
-		//_color = new Color(aLight._color.getRGB());
 		super(aLight._color);
 	}
 	public AmbientLight(int r, int g, int b){

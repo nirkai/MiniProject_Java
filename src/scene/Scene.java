@@ -19,14 +19,23 @@ public class Scene
 	private String _sceneName = "scene";
 	// ***************** Constructors ********************** //
 	public Scene(){
-		
+		_screenDistance = 100;
+		_camera = new Camera();
+		_background = new Color(0, 0, 0);
+		_ambientLight = new AmbientLight();
+		_geometries = new ArrayList<Geometry>();
 	}
 	public Scene (Scene scene){
-		
+		this(scene._ambientLight, scene._background,
+				scene._camera, scene._screenDistance);
 	}
 	public Scene(AmbientLight aLight, Color background,
 			Camera camera, double screenDistance){
-		
+		_ambientLight = new AmbientLight(aLight);
+		_background = new Color(background.getRGB());
+		_camera = new Camera(camera);
+		_screenDistance = screenDistance;
+		_geometries = new ArrayList<Geometry>();
 	}
 	//***************** Getters/Setters ********************** //
 	public Color getBackground(){

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+
 //import elements.LightSource;
 import geometries.FlatGeometry;
 import geometries.Geometry;
@@ -22,7 +23,12 @@ public class Render	{
 	
 	// ***************** Constructors ********************** //
 	public Render(ImageWriter imageWriter, Scene scene){
-		
+		_imageWriter = new ImageWriter(imageWriter);
+		_scene = new Scene(scene);
+	}
+	
+	public Render(Render render){
+		this(render._imageWriter, render._scene);
 	}
 	// ***************** Operations ******************** //
 	
@@ -30,6 +36,7 @@ public class Render	{
 		//TODO
 	}
 //	private Entry<Geometry, Point3D> findClosesntIntersection(Ray ray);
+	
 	public void printGrid(int interval){
 		//TODO
 	}

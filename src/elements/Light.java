@@ -6,7 +6,7 @@ public abstract class Light {
 	protected Color _color;
 	// ***************** Constructors ********************** //
 	public Light(){
-		_color = new Color(0); 	/////////
+		_color = new Color(255,255,255); 	/////////
 	}
 	public Light (Color color){
 		_color = new Color(color.getRGB());
