@@ -122,7 +122,7 @@ public class Camera {
 				vX.subtract(vY);
 				Pc.add(vX);			// P = Pc
 				Vector vector = new Vector(Pc);
-				return new Ray(vector.getHead(), vector);
+				return new Ray(Pc, vector);
 				
 			}
 			/*private Vector pixelCalc(int N, double ePoint, double sLengh, Vector vec) {

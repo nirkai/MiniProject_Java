@@ -28,6 +28,7 @@ public class Scene
 	public Scene (Scene scene){
 		this(scene._ambientLight, scene._background,
 				scene._camera, scene._screenDistance);
+		_geometries.addAll(scene._geometries);
 	}
 	public Scene(AmbientLight aLight, Color background,
 			Camera camera, double screenDistance){
@@ -39,13 +40,13 @@ public class Scene
 	}
 	//***************** Getters/Setters ********************** //
 	public Color getBackground(){
-		return _background;
+		return new Color(_background.getRGB());
 	}
 	public AmbientLight getAmbientLight(){
-		return _ambientLight;
+		return new AmbientLight(_ambientLight);
 	}
 	public Camera getCamera(){
-		return _camera;
+		return new Camera(_camera);
 	}
 	public String getSceneName(){
 		return _sceneName;
@@ -54,7 +55,7 @@ public class Scene
 		return _screenDistance;
 	}
 	public void setBackground(Color background){
-		_background = background; ///////////////// 
+		_background = new Color(background.getRGB()); ///////////////// 
 	}
 	public void setAmbientLight(AmbientLight ambientLight){
 		_ambientLight = new AmbientLight(ambientLight);

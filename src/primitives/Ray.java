@@ -41,14 +41,17 @@ public class Ray {
 		_POO.setPoint(_POO);
 	}
 	public void setDirection(Vector direction){
-		//_direction=new Vector(_direction);
 		_direction.setHead(direction.getHead());
 	}
+	/**
+	 * ray direction. return the specific vector, not new
+	 * @return direction vector
+	 */
 	public Vector getDirection(){
 		return _direction;
 	}
 	public Point3D getPOO(){
-		return _POO;
+		return new Point3D(_POO);
 	}
 
 }

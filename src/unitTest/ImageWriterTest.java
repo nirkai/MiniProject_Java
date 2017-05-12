@@ -17,9 +17,7 @@ public class ImageWriterTest {
 		ImageWriter imageWriter = new ImageWriter("Image writer test", 500, 500, 1, 1);
               Random rand = new Random();		
 		for (int i = 0; i < imageWriter.getHeight(); i++){
-			for (int j = 0; j < imageWriter.getWidth(); j++)
-                     {
-				
+			for (int j = 0; j < imageWriter.getWidth(); j++) {
 				if (i % 25 == 0 || j % 25 == 0 || i == j || i == 499 || j == 499 || i == 500 - j)
 					imageWriter.writePixel(j, i, 0, 0, 0);  // Black
                              else

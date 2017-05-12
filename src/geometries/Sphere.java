@@ -6,12 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-//import com.sun.java_cup.internal.runtime.virtual_parse_stack;
-
-//import org.omg.IOP.TAG_MULTIPLE_COMPONENTS;
-
-//import com.sun.java_cup.internal.runtime.virtual_parse_stack;
-
 public class Sphere extends RadialGeometry{
 
 	private Point3D _center;
@@ -34,18 +28,15 @@ public class Sphere extends RadialGeometry{
 	}
 	// ***************** Getters/Setters ********************** //
 	public Point3D getCenter(){
-		//TODO
-		return _center;
+		return new Point3D(_center);
 	}
 	public void setCenter(Point3D center){
-		//TODO
 		_center.setPoint(center);
 	}
 	// ***************** Operations ******************** //
 	@Override
 	public List<Point3D> FindIntersections(Ray ray) {
-		// TODO Auto-generated method stub
-		Point3D P0 = new Point3D(ray.getPOO());
+		Point3D P0 = ray.getPOO();
 		Vector L = new Vector(_center, P0);
 		Vector V = new Vector(ray.getDirection());
 		V.normalize();
@@ -89,7 +80,7 @@ public class Sphere extends RadialGeometry{
 	}
 	
 	private  Point3D intersecPoint(Ray ray, double t) {
-		Point3D P0 = new Point3D(ray.getPOO());
+		Point3D P0 = ray.getPOO();
 		Vector V = new Vector(ray.getDirection());
 		V.normalize();
 		V.scale(t);
