@@ -3,7 +3,7 @@ package elements;
 import primitives.*;
 import java.awt.Color;
 
-public class DirectionalLight extends Light	{
+public class DirectionalLight extends Light	implements LightSource{
 
 	private Vector _direction;
 	// ***************** Constructors ********************** //
@@ -12,6 +12,7 @@ public class DirectionalLight extends Light	{
 		_direction = new Vector(direction);
 	}
 	// ***************** Getters/Setters ********************** //
+	@Override
 	public Color getIntensity(Point3D point){
 		// TODO
 		return super.getIntensity();
@@ -22,6 +23,7 @@ public class DirectionalLight extends Light	{
 	public void setDirection(Vector direction){
 		_direction.setHead(direction.getHead());
 	}
+	@Override
 	public Vector getL(Point3D point){
 		return new Vector(point);
 	}
