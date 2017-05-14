@@ -23,6 +23,11 @@ public class Render	{
 	private final int RECURSION_LEVEL = 3;
 	
 	// ***************** Constructors ********************** //
+	/**
+	 * this contractor 
+	 * @param imageWriter
+	 * @param scene
+	 */
 	public Render(ImageWriter imageWriter, Scene scene){
 		_imageWriter = new ImageWriter(imageWriter);
 		_scene = new Scene(scene);
@@ -31,6 +36,7 @@ public class Render	{
 	public Render(Render render){
 		this(render._imageWriter, render._scene);
 	}
+	
 	// ***************** Operations ******************** //
 	
 	public void renderImage(){

@@ -31,6 +31,7 @@ public class AmbientLight extends Light	{
 	public double getKa(){
 		return _Ka;
 	}
+	@Override
 	public Color getIntensity(){
 		//TODO
 		float r = (float) (_Ka * _color.getRed()) / 255;
