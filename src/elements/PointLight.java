@@ -3,7 +3,7 @@ package elements;
 import primitives.*;
 import java.awt.Color;
 
-public class PointLight extends Light{
+public class PointLight extends Light implements LightSource{
 	Point3D _position;
 	double _Kc, _Kl, _Kq;
 	// ***************** Constructors ********************** //
@@ -16,11 +16,13 @@ public class PointLight extends Light{
 		_Kq = kq;
 	}
 	// ***************** Getters/Setters ********************** //
+	@Override
 	public Color getIntensity(Point3D point)
 	{
 		return super.getIntensity();
 	}
 	public Vector getL(Point3D point){
+		
 		return null;
 	}
 }
