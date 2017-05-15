@@ -9,6 +9,7 @@ public abstract class Geometry {
 	private double _nShininess = 1;
 	private Color _emmission = new Color(0, 0, 0);
 	
+	//A list with the insertion points
 	public abstract List<Point3D> FindIntersections (Ray ray);
 	public abstract Vector getNormal(Point3D point);
 	
