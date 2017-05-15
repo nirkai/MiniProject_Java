@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class AmbientLight extends Light	{
 	
-	private final double _Ka = 0.1;
+	private final double _Ka = 1;
 	
 	// ***************** Constructors ********************** //
 	public AmbientLight(){

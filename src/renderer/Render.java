@@ -42,8 +42,8 @@ public class Render	{
 	public void renderImage(){
 		//TODO
 		List<Point3D> intersectionPoints =	new ArrayList<Point3D>();
-		for (int i = 0; i < _imageWriter.getHeight(); i++) {
-			for (int j = 0; j < _imageWriter.getWidth(); j++) {
+		for (int i = 0; i < _imageWriter.getNx(); i++) {
+			for (int j = 0; j < _imageWriter.getNy(); j++) {
 				Ray ray = _scene.getCamera().constructRayThroughPixel(_imageWriter.getNx(),
 				_imageWriter.getNy(), j, i,_scene.getScreenDistance(), _imageWriter.getWidth(), 
 				_imageWriter.getHeight());
@@ -66,9 +66,11 @@ public class Render	{
 	public void printGrid(int interval){
 		//TODO
 		for (int i = 0; i < _imageWriter.getWidth()/interval; i++) {
-			for (int j = 0; j < _imageWriter.getHeight()/interval; j++) {
-				_imageWriter.writePixel(interval*i + i/interval
-						, interval*j + i/interval
+			for (int j = 0; j < _imageWriter.getNy(); j++) {
+				_imageWriter.writePixel(j
+						, i * interval
+						, 255, 255, 255);
+				_imageWriter.writePixel(i * interval, j
 						, 255, 255, 255);
 			}
 		}
