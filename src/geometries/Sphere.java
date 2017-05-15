@@ -34,6 +34,16 @@ public class Sphere extends RadialGeometry{
 		_center.setPoint(center);
 	}
 	// ***************** Operations ******************** //
+	/**
+	 * A function that returns a list of point 3d
+	 * that are the intersection points of the beam with the circle
+	 * @param P0 : Point of imposition of the fund
+	 * @param L : The distance between the starting point and the center
+	 * @param V : Direction of cutting point
+	 * @param t_M : The distance between the projection point and the junction point of the high and the beam
+	 * @param d : Height length
+	 * d most to be <= _radius
+	 */
 	@Override
 	public List<Point3D> FindIntersections(Ray ray) {
 		Point3D P0 = ray.getPOO();
