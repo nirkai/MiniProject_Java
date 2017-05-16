@@ -42,7 +42,7 @@ public class Sphere extends RadialGeometry{
 	 * @param V : Direction of cutting point
 	 * @param t_M : The distance between the projection point and the junction point of the high and the beam
 	 * @param d : Height length
-	 * d most to be <= _radius
+	 * d must to be <= _radius
 	 */
 	@Override
 	public List<Point3D> FindIntersections(Ray ray) {
@@ -74,15 +74,10 @@ public class Sphere extends RadialGeometry{
 			Point3D p1 = intersecPoint(ray, t1);
 			Point3D p2 = intersecPoint(ray, t2);
 			
-			
-			if (t1 > 0) {
-				
+			if (t1 > 0) 				
 				pArrayList.add(p1);
-			}
-			if (t2 > 0) {
-				
+			if (t2 > 0) 
 				pArrayList.add(p2);
-			}
 			return pArrayList;
 		}
 		
@@ -98,6 +93,7 @@ public class Sphere extends RadialGeometry{
 		return new Point3D(P0);
 	}
 	
+	@Override
 	public Vector getNormal(Point3D point){
 		Vector vector = new Vector(point,_center);
 		vector.normalize();

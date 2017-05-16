@@ -3,10 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import primitives.*;
-//import sun.net.www.content.text.plain;
 
-//import com.sun.javafx.geom.Vec2d;
-//import sun.net.www.content.text.plain;
 
 public class Plane extends Geometry implements FlatGeometry {
 	
@@ -19,8 +16,6 @@ public class Plane extends Geometry implements FlatGeometry {
 		_Q = new Point3D();
 	}
 	public Plane (Plane plane){
-	//	_normal = new Vector(plane._normal);
-	//	_Q = new Point3D(plane._Q);
 		this(plane._normal, plane._Q);
 	}
 	public Plane (Vector normal, Point3D q){
@@ -34,7 +29,7 @@ public class Plane extends Geometry implements FlatGeometry {
 		return new Vector(_normal);
 	}
 	public Point3D getQ(){
-		return _Q;   ///
+		return new Point3D(_Q);   ///
 	}
 	public void setNormal(Vector normal){
 		_normal.setHead(normal.getHead());
@@ -44,11 +39,8 @@ public class Plane extends Geometry implements FlatGeometry {
 		_Q.setPoint(d);
 	}
 	// ***************** Operations ******************** //
-	//public List<Point3D> FindIntersections(Ray ray);
 	@Override
-	public List<Point3D> FindIntersections(Ray ray) {
-		// TODO Auto-generated method stub
-		
+	public List<Point3D> FindIntersections(Ray ray) {		
 		Vector vQ_P = new Vector(ray.getPOO(), _Q);
 		Vector vector2 = new Vector(ray.getDirection());
 		List<Point3D> pArrayList = new ArrayList<Point3D>();
