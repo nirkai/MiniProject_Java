@@ -14,7 +14,7 @@ public class Scene
 	private AmbientLight _ambientLight;
 	private List<Geometry> _geometries = new ArrayList<Geometry>();
 	private Camera _camera;
-	private double _screenDistance;
+	private double _screenDistance;    //The distance between the camera and the screen
 //	private List<LightSource> _lights = new ArrayList<LightSource>();
 	private String _sceneName = "scene";
 	// ***************** Constructors ********************** //

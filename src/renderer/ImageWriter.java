@@ -52,6 +52,8 @@ public class ImageWriter	{
 			e.printStackTrace();
 		}
 	}
+	
+	//A collection of functions that accept position on the screen and color in the same place
 	public void writePixel(int xIndex, int yIndex, int r, int g, int b)
 	{
 		int rgb = new Color(r, g, b).getRGB();
