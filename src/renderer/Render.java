@@ -38,7 +38,10 @@ public class Render	{
 	}
 	
 	// ***************** Operations ******************** //
-	
+	/**
+	 * Finding a collection of cut points If there is no cut point it will be colored in the appropriate color 
+	 * if a function is sent to the next point
+	 */
 	public void renderImage(){
 		//TODO
 		List<Point3D> intersectionPoints =	new ArrayList<Point3D>();
@@ -81,7 +84,8 @@ public class Render	{
 		_imageWriter.writeToimage();
 	}
 	
-	/* private Map<Geometry, Point3D> getClosestPoint(Map<Geometry,
+	/*Finds from a list of the closest cutting points.
+	  private Map<Geometry, Point3D> getClosestPoint(Map<Geometry,
 			List<Point3D>> intersectionPoints);	 */
 	private Point3D getClosestPoint(List<Point3D> intersectionPoints) {
 		double distance = Double.MAX_VALUE;
