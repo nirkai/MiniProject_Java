@@ -60,14 +60,14 @@ public class RenderTest
          
         
         Scene scene1 = new Scene(new AmbientLight(255,255,255), 
-    			new Color(0.3f,0.5f,0.74f), 
+    			new Color(0,0,0), 
     			new Camera(), 48);
         
 
-		sphere.setEmmission(new Color (255, 255, 255));
+		sphere.setEmmission(new Color (0, 0, 0));
 		triangle.setEmmission(new Color (0, 255, 255));
 		triangle2.setEmmission(new Color (255, 255, 0));
-		triangle3.setEmmission(new Color (255, 255, 255));
+		triangle3.setEmmission(new Color (0, 0, 0));
 		triangle4.setEmmission(new Color (255, 0, 255));
 		
 		scene1.addGeometry(sphere);
