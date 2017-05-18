@@ -70,7 +70,7 @@ public class Triangle extends Geometry implements FlatGeometry {
 	public Vector getNormal(Point3D point){
 		Vector AB = new Vector(_p1, _p2);
 		Vector AC = new Vector(_p1, _p3);
-	//	this will make a cross product like => -1 x (AB x AC) 
+	//	this make a cross product like => -1 x (AB x AC) 
 		Vector normal = AC.crossProduct(AB);
 		normal.normalize();
 		return normal;

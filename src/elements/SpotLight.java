@@ -12,11 +12,12 @@ public class SpotLight extends PointLight {
 		_direction = new Vector(direction);
 	}
 	// ***************** Getters/Setters ********************** //
+	@Override
 	public Color getIntensity(Point3D point){
 		// TODO
 		Vector dVector = new Vector(_direction);
 		double d = dVector.length();
-		Vector lVector = new Vector(point);
+		Vector lVector = new Vector(point, _position);
 		dVector.normalize();
 		lVector.normalize();
 		double dot = dVector.dotProduct(lVector);

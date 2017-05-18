@@ -17,10 +17,16 @@ public class PointLight extends Light implements LightSource{
 	}
 	// ***************** Getters/Setters ********************** //
 	@Override
-	public Color getIntensity(Point3D point)
-	{
-		return super.getIntensity();
+	public Color getIntensity(Point3D point)	{
+		Vector lightDirect = new Vector(point, _position);
+		double d = lightDirect.length();
+		float attenuation = (float)(_Kc + _Kl*d + _Kq*Math.pow(d, 2));
+		float r = _color.getRed() / (attenuation*255);
+		float g = _color.getGreen() / (attenuation*255);
+		float b = _color.getBlue() / (attenuation*255);
+		return new Color(r, g, b);
 	}
+	
 	public Vector getL(Point3D point){
 		
 		return null;

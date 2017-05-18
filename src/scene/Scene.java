@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import elements.AmbientLight;
 import elements.Camera;
-//import elements.LightSource;
+import elements.LightSource;
 import geometries.Geometry;
 public class Scene
 {
@@ -15,7 +15,7 @@ public class Scene
 	private List<Geometry> _geometries = new ArrayList<Geometry>();
 	private Camera _camera;
 	private double _screenDistance;    //The distance between the camera and the screen
-//	private List<LightSource> _lights = new ArrayList<LightSource>();
+	private List<LightSource> _lights = new ArrayList<LightSource>();
 	private String _sceneName = "scene";
 	// ***************** Constructors ********************** //
 	public Scene(){
@@ -76,6 +76,10 @@ public class Scene
 	public Iterator<Geometry> getGeometriesIterator(){
 		return _geometries.iterator();
 	}
-//	public void addLight(LightSource light);
-//	public Iterator<LightSource> getLightsIterator();
+	public void addLight(LightSource light){
+		
+	}
+	public Iterator<LightSource> getLightsIterator(){
+		return _lights.iterator();
+	}
 }
