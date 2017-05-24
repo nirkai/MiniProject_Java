@@ -15,19 +15,25 @@ public class SpotLight extends PointLight {
 	@Override
 	public Color getIntensity(Point3D point){
 		// TODO
+		
+		/*
 		Vector dVector = new Vector(_direction);
 		double d = dVector.length();
 		Vector lVector = new Vector(point, _position);
 		dVector.normalize();
 		lVector.normalize();
 		double dot = dVector.dotProduct(lVector);
-		float I = (float)(dot * _color.getRGB());
-		I /= (_Kc * d * _Kl * Math.pow(d, 2) * _Kq);
+		int col = _color.getRGB();
+		double I = Math.abs(col) * dot;
+		I /= (_Kc * _Kl * _Kq * Math.pow(d, 3)); // equal to => Kc * Ki*d * Kq*d^2
+		*/
+
 		
-		float r = _color.getRed() * I / 255;
-		float g = _color.getGreen() * I / 255;
-		float b = _color.getBlue() * I / 255;
+		Color Ie = super.getIntensity(point);
 		
+		int r = Math.min((int)(_color.getRed() * Ie.getRed()), 255);
+		int g = Math.min((int)(_color.getGreen() * Ie.getGreen()), 255);
+		int b = Math.min((int)(_color.getBlue() * Ie.getBlue()), 255);
 		return new Color(r, g, b);
 
 	}

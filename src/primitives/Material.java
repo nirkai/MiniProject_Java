@@ -18,7 +18,11 @@ public class Material {
 	_n = 1;
 	}
 	public Material(Material material){
-		
+		_Kd = material._Kd;
+		_Ks = material._Ks;
+		_Kr = material._Kr;
+		_Kt = material._Kt;
+		_n = material._n;
 	}
 	
 	// ***************** Getters/Setters ********************** //

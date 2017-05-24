@@ -39,6 +39,7 @@ public class Plane extends Geometry implements FlatGeometry {
 	// ***************** Getters/Setters ********************** //
 	@Override
 	public Vector getNormal(Point3D point){
+		_normal.normalize();
 		return new Vector(_normal);
 	}
 	public Point3D getQ(){

@@ -29,6 +29,7 @@ public class Scene
 		this(scene._ambientLight, scene._background,
 				scene._camera, scene._screenDistance);
 		_geometries.addAll(scene._geometries);
+		_lights.addAll(scene._lights);
 	}
 	public Scene(AmbientLight aLight, Color background,
 			Camera camera, double screenDistance){
@@ -77,7 +78,7 @@ public class Scene
 		return _geometries.iterator();
 	}
 	public void addLight(LightSource light){
-		
+		_lights.add(light);
 	}
 	public Iterator<LightSource> getLightsIterator(){
 		return _lights.iterator();
