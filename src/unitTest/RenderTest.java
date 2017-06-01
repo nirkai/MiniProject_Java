@@ -45,7 +45,7 @@ public class RenderTest
         scene.addGeometry(triangle3);
         scene.addGeometry(triangle4);
          
-        ImageWriter imageWriter = new ImageWriter("Render test", 500, 500, 500, 500);
+        ImageWriter imageWriter = new ImageWriter("Render test2", 500, 500, 500, 500);
          
         Render render = new Render(imageWriter, scene);
          

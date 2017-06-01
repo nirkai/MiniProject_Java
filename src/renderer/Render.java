@@ -76,7 +76,7 @@ public class Render	{
 //	private Entry<Geometry, Point3D> findClosesntIntersection(Ray ray);
 	
 	public void printGrid(int interval){
-		for (int i = 0; i < _imageWriter.getWidth()/interval; i++) {
+		for (int i = 0; i < _imageWriter.getNx()/interval; i++) {
 			for (int j = 0; j < _imageWriter.getNy(); j++) {
 				_imageWriter.writePixel(j, i * interval, 255, 255, 255);
 				_imageWriter.writePixel(i * interval, j, 255, 255, 255);
@@ -214,10 +214,10 @@ public class Render	{
 	
 	private Color calcDiffusiveComp(double kd, Vector normal, Vector l,	Color lightIntensity){
 		//TODO
-		Vector lVector = new Vector(l);
-		lVector.normalize();
+		//Vector lVector = new Vector(l);
+		l.normalize();
 		normal.normalize();
-		double dot = normal.dotProduct(lVector);
+		double dot = normal.dotProduct(l);
 		dot = kd * (Math.abs(dot));
 		int r = Math.min((int)(dot * lightIntensity.getRed()),255 );
 		int g = Math.min((int)(dot * lightIntensity.getGreen()),255 );
@@ -229,20 +229,24 @@ public class Render	{
 	private Color calcSpecularComp(double ks, Vector v, Vector normal,
 			Vector l, double shininess, Color lightIntensity){
 		// TODO
-		Vector dVector = new Vector(l);
-		Vector N = new Vector(normal);
+		//Vector dVector = new Vector(l);
+		//Vector N = new Vector(normal);
+		//Vector R = new Vector(l);
+		//R.normalize();		
+		//dVector.normalize();
+		//double scal = 2 * dVector.dotProduct(N);
+		l.normalize();
+		normal.normalize();
+		double scal = 2 * l.dotProduct(normal);
+		normal.scale(scal);
 		Vector R = new Vector(l);
-		R.normalize();		
-		dVector.normalize();
-		double scal = 2 * dVector.dotProduct(N);
-		N.scale(scal);
-		R.subtract(N);
+		R.subtract(normal);
 		R.normalize();
 		
-		Vector vector = new Vector(v);
-		vector.normalize();
-		
-		double rgb = vector.dotProduct(R);
+		//Vector vector = new Vector(v);
+		//vector.normalize();
+		v.normalize();
+		double rgb = v.dotProduct(R);
 		rgb = Math.abs(rgb);
 		rgb = Math.pow(rgb, shininess);
 		rgb *= ks;
