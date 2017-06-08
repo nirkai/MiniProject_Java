@@ -44,7 +44,7 @@ public class ImageWriter	{
 	// ***************** Operations ******************** //
 	public void writeToimage()
 	{
-		File outFile = new File(PROJECT_PATH + "/" + _imageName + ".jpg");
+		File outFile = new File(PROJECT_PATH + "/pictures/" + _imageName + ".jpg");
 		try {
 			ImageIO.write(_image, "jpg", outFile);
 		}

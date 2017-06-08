@@ -73,6 +73,7 @@ public class Triangle extends Geometry implements FlatGeometry {
 	//	this make a cross product like => -1 x (AB x AC) 
 		Vector normal = AB.crossProduct(AC);
 		normal.normalize();
+		normal.scale(-1);
 		return normal;
 	}
 	/*
@@ -95,8 +96,8 @@ public class Triangle extends Geometry implements FlatGeometry {
 	
 	
  // find if the intersection fell in with the triangle on the plane	 
-	private boolean checkInstructions(Point3D rayPoo, Point3D p0) {
-		Vector P_P0 = new Vector(p0, rayPoo);
+	private boolean checkInstructions(Point3D p0, Point3D p) {
+		Vector P_P0 = new Vector(p, p0);
 		Vector vProjector[] = new Vector[3];
 		vProjector[0] = projector(_p1, _p2, p0);
 		vProjector[1] = projector(_p2, _p3, p0);

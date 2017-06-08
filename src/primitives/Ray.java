@@ -1,6 +1,5 @@
 package primitives;
 
-import com.sun.javafx.scene.traversal.Direction;
 
 /**
  * This class take care of the rays. 
@@ -48,7 +47,7 @@ public class Ray {
 	}
 	/**
 	 * ray direction. return the specific vector, not new
-	 * @return direction vector
+	 * @return new direction vector, normalize.
 	 */
 	public Vector getDirection(){
 		_direction.normalize();
