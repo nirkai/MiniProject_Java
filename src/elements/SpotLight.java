@@ -17,7 +17,8 @@ public class SpotLight extends PointLight {
 
 		Vector dVector = new Vector(_direction);
 		Vector lVector = getL(point);
-		double d = lVector.length();
+		//double d = lVector.length();
+		double d = point.distance(_position);
 		dVector.normalize();
 		lVector.normalize();
 		double dot = Math.abs(dVector.dotProduct(lVector));

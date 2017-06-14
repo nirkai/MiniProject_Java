@@ -43,14 +43,14 @@ public class Render	{
 	 * Finding a collection of cut points If there is no cut point it will be colored in the appropriate color 
 	 * if a function is sent to the next point
 	 */
-	public void renderImage(){
+	public void renderImage1(){
 		List<Point3D> intersectionPoints =	new ArrayList<Point3D>();
 		for (int i = 0; i < _imageWriter.getNx(); i++) {
 			for (int j = 0; j < _imageWriter.getNy(); j++) {
 				Ray ray = _scene.getCamera().constructRayThroughPixel(_imageWriter.getNx(),
 				_imageWriter.getNy(), j, i,_scene.getScreenDistance(), _imageWriter.getWidth(), 
 				_imageWriter.getHeight());
-				intersectionPoints = getSceneRayIntersections(ray);
+				intersectionPoints = getSceneRayIntersections1(ray);
 				if (intersectionPoints.isEmpty()) {
 					_imageWriter.writePixel(j, i, _scene.getBackground());
 				}
@@ -63,7 +63,7 @@ public class Render	{
 		}
 	}
 	
-	private List<Point3D> getSceneRayIntersections(Ray ray){
+	private List<Point3D> getSceneRayIntersections1(Ray ray){
 		Iterator<Geometry> geometries = _scene.getGeometriesIterator();
 		List<Point3D> intersectionPoints = new ArrayList<Point3D>();
 		while (geometries.hasNext()) {
@@ -128,14 +128,14 @@ public class Render	{
 	private Color addColors(Color a, Color b);
 	*/
 	
-	public void renderImage1(){
+	public void renderImage(){
 		Map<Geometry, List<Point3D>> intersectionPoints = new HashMap<Geometry, List<Point3D>>();
 		for (int i = 0; i < _imageWriter.getNx(); i++) {
 			for (int j = 0; j < _imageWriter.getNy(); j++) {
 				Ray ray = _scene.getCamera().constructRayThroughPixel(_imageWriter.getNx(),
 				_imageWriter.getNy(), j, i,_scene.getScreenDistance(), _imageWriter.getWidth(), 
 				_imageWriter.getHeight());
-				intersectionPoints = getSceneRayIntersections1(ray);
+				intersectionPoints = getSceneRayIntersections(ray);
 				if (intersectionPoints.isEmpty()) {
 					_imageWriter.writePixel(j, i, _scene.getBackground());
 				}
@@ -163,7 +163,7 @@ public class Render	{
 		return I0;
 	}
 	
-	private Map<Geometry, List<Point3D>> getSceneRayIntersections1(Ray ray){
+	private Map<Geometry, List<Point3D>> getSceneRayIntersections(Ray ray){
 		Iterator<Geometry> geometries = _scene.getGeometriesIterator();
 		Map<Geometry, List<Point3D>> intersectionPoints = new HashMap<Geometry, List<Point3D>>();
 		while (geometries.hasNext()) {
@@ -253,6 +253,7 @@ public class Render	{
 		while (lights.hasNext()){
 			LightSource light = lights.next();
 			if (!occluded(light, point, geometry)) {
+				
 				diffuseLight = addColors(diffuseLight, 
 						calcDiffusiveComp(geometry.getMaterial().getKd(), geometry.getNormal(point),
 													light.getL(point), light.getIntensity(point)));			
@@ -297,6 +298,7 @@ public class Render	{
 	private Ray constructReflectedRay(Vector normal, Point3D point,	Ray inRay){
 		//TODO
 		Vector R = inRay.getDirection(); // already normalize
+		
 		double scal = 2 * Math.abs(R.dotProduct(normal));
 		Vector N = new Vector(normal);
 		N.normalize();
@@ -307,6 +309,14 @@ public class Render	{
 		eps.add(epsV);
 		
 		return new Ray(eps, R);
+		
+		/*
+		N.setHead(normal.getHead());
+		N.scale(2);
+		Point3D geometryPoint = new Point3D(point);
+		geometryPoint.add(N);
+		return new Ray(geometryPoint, R);
+		 */
 	}
 	
 	private Ray constructRefractedRay(Geometry geometry, Point3D point,	Ray inRay){
@@ -318,13 +328,17 @@ public class Render	{
 		double cosOi = N.dotProduct(inRay.getDirection());
 		//double cosOr = 
 		Point3D pointEps = new Point3D(point);
+		N.scale(-2);
+		Vector epsVec = inRay.getDirection();
+		epsVec.scale(EPS);
+		pointEps.add(N);
 		Vector temp = new Vector(EPS, EPS, EPS);
 		//pointEps.add(temp);
-		return new Ray(point, inRay.getDirection());
+		return new Ray(pointEps, inRay.getDirection());
 	}
 	
 	private Map<Geometry, Point3D> findClosesntIntersection(Ray ray){
-		Map<Geometry, List<Point3D>> intersections = getSceneRayIntersections1(ray);
+		Map<Geometry, List<Point3D>> intersections = getSceneRayIntersections(ray);
 		double distance = Double.MAX_VALUE;
 		Map<Geometry, Point3D> minDistancePoint = new HashMap<Geometry, Point3D>();
 		for (Entry<Geometry, List<Point3D>> entry: intersections.entrySet()){
@@ -344,10 +358,10 @@ public class Render	{
 		lightDirection.scale(-1);
 		Point3D geometryPoint = new Point3D(point);
 		Vector epsVector = new Vector(geometry.getNormal(point));
-		epsVector.scale(EPS);
+		epsVector.scale(2);
 		geometryPoint.add(epsVector);
 		Ray lightRay = new Ray(geometryPoint, lightDirection);
-		Map<Geometry, List<Point3D>> intersectionPoints = getSceneRayIntersections1(lightRay);
+		Map<Geometry, List<Point3D>> intersectionPoints = getSceneRayIntersections(lightRay);
 		
 		// Flat geometry cannot self intersect
 		if (geometry instanceof FlatGeometry){
@@ -360,12 +374,15 @@ public class Render	{
 		return false;
 		
 		//return !intersectionPoints.isEmpty();
-		}
+	}
 	
 	private Color calcDiffusiveComp(double kd, Vector normal, Vector l,	Color lightIntensity){
 		l.normalize();
 		normal.normalize();
 		double dot = normal.dotProduct(l);
+		/*if (dot > 0) {
+			return new Color(0, 0, 0);
+		}*/
 		dot = kd * (Math.abs(dot));
 		return multColor(lightIntensity, dot);
 	}
@@ -382,6 +399,9 @@ public class Render	{
 
 		v.normalize();
 		double rgb = v.dotProduct(R);
+		if (rgb > 0) {
+			return new Color(0, 0, 0);
+		}
 		rgb = Math.abs(rgb);
 		rgb = Math.pow(rgb, shininess);
 		rgb *= ks;
