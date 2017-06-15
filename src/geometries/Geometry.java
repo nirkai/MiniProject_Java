@@ -26,7 +26,7 @@ public abstract class Geometry {
 		return new Material(_material);
 	}
 	public Color getEmmission(){
-		return new Color(_emmission.getRGB());
+		return new Color(_emmission.getRed(),_emmission.getGreen(),_emmission.getBlue());
 	}
 		
 	public void setShininess(double n){
@@ -36,7 +36,7 @@ public abstract class Geometry {
 		_material = new Material(_material);
 	}
 	public void setEmmission(Color emmission){
-		_emmission = new Color(emmission.getRGB());
+		_emmission = new Color(emmission.getRed(),emmission.getGreen(),emmission.getBlue());
 	}
 	public void setKs(double ks){
 		_material.setKs(ks);

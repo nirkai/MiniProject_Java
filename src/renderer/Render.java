@@ -145,8 +145,8 @@ public class Render	{
 					Iterator<Entry<Geometry, Point3D>> iterator = closestPoint.entrySet().iterator();
 					clos = iterator.next();
 					_imageWriter.writePixel(j, i, 
-						calcColor(clos.getKey(), //////
-								clos.getValue(), ray));
+						calcColor3(clos.getKey(), //////
+								clos.getValue()));
 				}
 					
 			}
@@ -368,12 +368,12 @@ public class Render	{
 			intersectionPoints.remove(geometry);
 		}
 		
-		for (Entry<Geometry, List<Point3D>> entry: intersectionPoints.entrySet())
+		/*for (Entry<Geometry, List<Point3D>> entry: intersectionPoints.entrySet())
 			if (entry.getKey().getMaterial().getKt() == 0)
 				return true;
-		return false;
+		return false;*/
 		
-		//return !intersectionPoints.isEmpty();
+		return !intersectionPoints.isEmpty();
 	}
 	
 	private Color calcDiffusiveComp(double kd, Vector normal, Vector l,	Color lightIntensity){

@@ -23,20 +23,19 @@ public class AmbientLight extends Light	{
 	// ***************** Getters/Setters ********************** //
 	public Color getColor(){
 		//TODO
-		return new Color(_color.getRGB());
+		int r = _color.getRed();
+		int g = _color.getGreen();
+		int b = _color.getBlue();
+		return new Color(r,g,b);
 	}
 	public void setColor(Color color){
-		_color = new Color(color.getRGB());
+		_color = new Color(color.getRed(),color.getGreen(),color.getBlue());
 	}
 	public double getKa(){
 		return _Ka;
 	}
 	@Override
 	public Color getIntensity(){
-		//TODO
-		//float r = (float) (_Ka * _color.getRed()) / 255;
-		//float g = (float)(_Ka * _color.getGreen()) / 255;
-		//float b = (float)(_Ka * _color.getBlue()) / 255;
 		int r = Math.min((int)(_Ka * _color.getRed()),255 );
 		int g = Math.min((int)(_Ka * _color.getGreen()),255 );
 		int b = Math.min((int)(_Ka * _color.getBlue() ),255);

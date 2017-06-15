@@ -9,10 +9,14 @@ public abstract class Light {
 		_color = new Color(255,255,255); 	/////////
 	}
 	public Light (Color color){
-		_color = new Color(color.getRGB());
+		
+		_color = new Color(color.getRed(),color.getGreen(),color.getBlue());
 	}
 	// ***************** Getters/Setters ********************** //
 	public Color getIntensity(){
-		return new Color(_color.getRGB());
+		int r = _color.getRed();
+		int g = _color.getGreen();
+		int b = _color.getBlue();
+		return new Color(r,g,b);
 	}
 }

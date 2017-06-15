@@ -31,7 +31,7 @@ public class EmmissionTest {
 		scene.addGeometry(sph1);
 		scene.addLight(pointLight);
 		Render render = new Render(imageWriter, scene);
-		render.renderImage1();
+		render.renderImage();
 		render.writeToImage();*/
 		
 		/*scene = new Scene(new AmbientLight(255,255,255), new Color(0,0,0), new Camera(), 250);
@@ -46,66 +46,8 @@ public class EmmissionTest {
 		scene.addGeometry(sph1);
 		scene.addLight(pointLight);
 		Render render = new Render(imageWriter, scene);
-		render.renderImage1();
+		render.renderImage();
 		render.writeToImage();*/
-		
-		Scene scene = new Scene(new AmbientLight(255,255,255), new Color(0,0,0), new Camera(), 100);
-		ImageWriter imageWriter = new ImageWriter("ReflectionsTest5", 500, 500, 500, 500);
-		
-		
-		Triangle triangle1 = new Triangle(new Point3D(100,-350,-3000), 
-				 new Point3D(950, 3000, -1900),new Point3D(-1800,-350,-1300));
-		Plane plane = new Plane(new Vector(0, 1, 0), new Point3D(0, -350, -1600));
-		Sphere sphere1 = new Sphere(350, new Point3D(0, 0, -800));
-		Sphere sphere2 = new Sphere(200, new Point3D(300, 0, -1200));
-		Sphere sphere3 = new Sphere(200, new Point3D(0, 0, -800));
-		sphere1.setShininess(35);
-		sphere2.setShininess(35);
-		sphere3.setShininess(35);
-		sphere1.setEmmission(new Color(17, 15, 116));
-		sphere2.setEmmission(new Color(17, 116, 15));
-		sphere3.setEmmission(new Color(116, 15, 17));
-		triangle1.setEmmission(new Color(0, 0, 0));
-		triangle1.setShininess(1);
-		triangle1.setKd(0);
-		triangle1.setKs(0);
-		triangle1.setKr(1);
-		plane.setEmmission(new Color(0, 0, 0));
-		plane.setShininess(200);
-		plane.setKd(0.5);
-		plane.setKs(0.5);
-		plane.setKr(1);
-		
-
-		triangle1.setEmmission(new Color(0,0,0));
-		triangle1.setShininess(1);
-		
-		sphere1.setKd(0.5);
-		sphere1.setKs(0.5);
-		sphere1.setKr(0);
-		sphere1.setKt(0.5);
-		sphere2.setKt(1);
-		sphere3.setKt(1);
-
-
-		triangle1.setEmmission(new Color(0, 0, 0));
-		scene.addGeometry(triangle1);
-		scene.addGeometry(sphere1);
-		scene.addGeometry(sphere2);
-		scene.addGeometry(sphere3);
-		scene.addGeometry(plane);
-
-		//DirectionalLight directionalLight = new DirectionalLight(new Color(250, 50, 50), new Vector(0, 0, -1));
-		PointLight pointLight = new PointLight(new Color(255, 50, 50), new Point3D(300, 100,-50), 0.00000056, 0.00000056, 0.000032);
-		
-		SpotLight spotLight = new SpotLight(new Color(255, 50, 50), new Point3D(50, 100,-50), new Vector(0, -1, -1), 0.00056, 0.00056, 0.0000032);
-		//scene.addLight(pointLight);
-		scene.addLight(spotLight);
-		//scene.addLight(directionalLight);
-		Render render = new Render(imageWriter, scene);
-		render.renderImage1();
-		render.writeToImage();
-		
 		
 		/*Scene scene = new Scene(new AmbientLight(255,255,255), new Color(0,0,0), new Camera(), 100);
 		ImageWriter imageWriter = new ImageWriter("PointSpotLightTest3", 500, 500, 500, 500);
@@ -137,7 +79,7 @@ public class EmmissionTest {
 		//scene.addLight(spotLight);
 		scene.addLight(directionalLight);
 		Render render = new Render(imageWriter, scene);
-		render.renderImage1();
+		render.renderImage();
 		render.writeToImage();
 		*/
 		
@@ -157,7 +99,7 @@ public class EmmissionTest {
 		scene.addGeometry(triangle2);
 		scene.addLight(pointLight);
 		Render render = new Render(imageWriter, scene);
-		render.renderImage1();
+		render.renderImage();
 		render.writeToImage();*/
 		
 		/*
@@ -172,7 +114,7 @@ public class EmmissionTest {
 		//scene.addLight(spotLight);
 		scene.addLight(pointLight);
 		Render render = new Render(imageWriter, scene);
-		render.renderImage1();
+		render.renderImage();
 		render.writeToImage();
 		*/
 		
@@ -229,7 +171,7 @@ public class EmmissionTest {
 
 		Render render1 = new Render(imageWriter1, scene1);
 
-		render1.renderImage1();
+		render1.renderImage();
 		//render1.printGrid(50);
 		render1.writeToImage();
         */
@@ -273,7 +215,7 @@ public class EmmissionTest {
 
 		Render render = new Render(imageWriter, scene);
 
-		render.renderImage1();
+		render.renderImage();
 		render.printGrid(50);
 		render.writeToImage();*/
 	}
