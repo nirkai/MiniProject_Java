@@ -12,14 +12,15 @@ public class SpotLight extends PointLight {
 		_direction = new Vector(direction);
 	}
 	// ***************** Getters/Setters ********************** //
+	//Il=I0(D*L)/(Kc+Kj*D+KqD^2)
 	@Override
 	public Color getIntensity(Point3D point){
 		Vector dVector = new Vector(_direction);
-		Vector lVector = getL(point);
+		Vector lVector = getL(point);//The point of impact on geometry
 		double d = point.distance(_position);
 		dVector.normalize();
 		lVector.normalize();
-		double attenuation = Math.abs(dVector.dotProduct(lVector));
+		double attenuation = Math.abs(dVector.dotProduct(lVector));//dotProduct  between L and D
 		if (attenuation < 0) {
 			return new Color(0, 0, 0);
 		}
