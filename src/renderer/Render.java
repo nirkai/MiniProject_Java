@@ -20,7 +20,7 @@ import scene.Scene;
 public class Render	{
 	private Scene _scene;
 	private ImageWriter _imageWriter;
-	private final int RECURSION_LEVEL = 3;
+	private final int RECURSION_LEVEL = 6;
 	private final double EPS = 0.0001;
 	
 	// ***************** Constructors ********************** //
@@ -108,6 +108,7 @@ public class Render	{
 		return _scene.getAmbientLight().getIntensity();
 	}
 	
+//<<<<<<< HEAD
 	/*
 	private Color calcColor(Geometry geometry, Point3D point, Ray ray);
 	private Color calcColor(Geometry geometry, Point3D point,
@@ -133,6 +134,7 @@ public class Render	{
 	 * For this purpose users are used Map 
 	 */
 	
+
 	public void renderImage(){
 		Map<Geometry, List<Point3D>> intersectionPoints = new HashMap<Geometry, List<Point3D>>();
 		for (int i = 0; i < _imageWriter.getNx(); i++) {
@@ -148,10 +150,12 @@ public class Render	{
 					Map<Geometry, Point3D> closestPoint = getClosestPoint(intersectionPoints);
 					Entry<Geometry, Point3D> clos;
 					Iterator<Entry<Geometry, Point3D>> iterator = closestPoint.entrySet().iterator();
-					clos = iterator.next();
-					_imageWriter.writePixel(j, i, 
-						calcColor3(clos.getKey(), //////
-								clos.getValue()));
+					if (iterator.hasNext()) {	
+						clos = iterator.next();
+						_imageWriter.writePixel(j, i, 
+							calcColor(clos.getKey(), //////
+									clos.getValue(), ray));
+					}
 				}
 					
 			}
@@ -321,6 +325,48 @@ public class Render	{
 		//TODO
 		Vector R = inRay.getDirection(); // already normalize
 		
+		double scal = 2 * R.dotProduct(normal);
+		Vector N = new Vector(normal);
+		N.normalize();
+		N.scale(scal);
+		R.subtract(N);
+		Vector epsV = new Vector(normal);
+		if (normal.dotProduct(R) < 0) {
+			epsV.scale(-2);
+		}
+		else {
+			epsV.scale(2);
+		}
+		
+		//Vector epsV = new Vector(EPS, EPS, EPS);
+		Point3D eps = new Point3D(point);
+		
+		eps.add(epsV);
+		
+		return new Ray(eps, R);
+		
+	}
+	
+	private Ray constructRefractedRay(Geometry geometry, Point3D point,	Ray inRay){
+		//TODO
+		Vector N = geometry.getNormal(point);
+		Vector direct = inRay.getDirection();
+		double cosOi = N.dotProduct(direct);
+		if (cosOi < 0) {
+			N.scale(-2);
+		}
+		else{
+			N.scale(2);
+		}
+		Point3D pointEps = new Point3D(point);
+		pointEps.add(N);		
+		return new Ray(pointEps, direct);
+	}
+	
+	/*private Ray constructReflectedRay(Vector normal, Point3D point,	Ray inRay){
+		//TODO
+		Vector R = inRay.getDirection(); // already normalize
+		
 		double scal = 2 * Math.abs(R.dotProduct(normal));
 		Vector N = new Vector(normal);
 		N.normalize();
@@ -332,13 +378,6 @@ public class Render	{
 		
 		return new Ray(eps, R);
 		
-		/*
-		N.setHead(normal.getHead());
-		N.scale(2);
-		Point3D geometryPoint = new Point3D(point);
-		geometryPoint.add(N);
-		return new Ray(geometryPoint, R);
-		 */
 	}
 	
 	private Ray constructRefractedRay(Geometry geometry, Point3D point,	Ray inRay){
@@ -353,11 +392,12 @@ public class Render	{
 		N.scale(-2);
 		Vector epsVec = inRay.getDirection();
 		epsVec.scale(EPS);
+		
 		pointEps.add(N);
 		Vector temp = new Vector(EPS, EPS, EPS);
 		//pointEps.add(temp);
 		return new Ray(pointEps, inRay.getDirection());
-	}
+	}*/
 	
 	private Map<Geometry, Point3D> findClosesntIntersection(Ray ray){
 		Map<Geometry, List<Point3D>> intersections = getSceneRayIntersections(ray);
@@ -396,12 +436,12 @@ public class Render	{
 			intersectionPoints.remove(geometry);
 		}
 		
-		/*for (Entry<Geometry, List<Point3D>> entry: intersectionPoints.entrySet())
+		for (Entry<Geometry, List<Point3D>> entry: intersectionPoints.entrySet())
 			if (entry.getKey().getMaterial().getKt() == 0)
 				return true;
-		return false;*/
+		return false;
 		
-		return !intersectionPoints.isEmpty();
+		//return !intersectionPoints.isEmpty();
 	}
 	//kd*(n*l)Il
 	private Color calcDiffusiveComp(double kd, Vector normal, Vector l,	Color lightIntensity){
@@ -427,11 +467,11 @@ public class Render	{
 		R.normalize();
 
 		v.normalize();
-		double rgb = v.dotProduct(R);
-		if (rgb > 0) {
+		double rgb = -1 * v.dotProduct(R);
+		if (rgb < 0) {
 			return new Color(0, 0, 0);
 		}
-		rgb = Math.abs(rgb);
+		//rgb = Math.abs(rgb);
 		rgb = Math.pow(rgb, shininess);
 		rgb *= ks;
 		

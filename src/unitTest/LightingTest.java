@@ -16,49 +16,6 @@ import scene.Scene;
 
 public class LightingTest {
 
-
-	@Test 
-	public void emmissionTest(){
-
-		Scene scene = new Scene();
-		scene.setScreenDistance(48);
-		scene.addGeometry(new Sphere(50, new Point3D(0.0, 0.0, -50)));
-
-		Triangle triangle = new Triangle(new Point3D( 100, 0, -49),
-				new Point3D(  0, 100, -49),
-				new Point3D( 100, 100, -49));
-
-		Triangle triangle2 = new Triangle(new Point3D( 100, 0, -49),
-				new Point3D(  0, -100, -49),
-				new Point3D( 100,-100, -49));
-		triangle2.setEmmission(new Color (50, 200, 50));
-
-		Triangle triangle3 = new Triangle(new Point3D(-100, 0, -49),
-				new Point3D(  0, 100, -49),
-				new Point3D(-100, 100, -49));
-		triangle3.setEmmission(new Color (50, 50, 200));
-
-		Triangle triangle4 = new Triangle(new Point3D(-100, 0, -49),
-				new Point3D(  0,  -100, -49),
-				new Point3D(-100, -100, -49));
-		triangle4.setEmmission(new Color (200, 50, 50));
-
-		scene.addGeometry(triangle);
-		scene.addGeometry(triangle2);
-		scene.addGeometry(triangle3);
-		scene.addGeometry(triangle4);
-
-		ImageWriter imageWriter = new ImageWriter("Emmission test", 500, 500, 500, 500);
-
-		Render render = new Render(imageWriter, scene);
-
-		render.renderImage();
-		render.printGrid(50);
-		render.writeToImage();
-	}
-
-
-
 	@Test
 	public void spotLightTest2(){
 
@@ -70,8 +27,8 @@ public class LightingTest {
 		scene.addGeometry(sphere);
 
 		Triangle triangle = new Triangle(new Point3D(-125, -225, -260),
-				new Point3D(-225, -125, -260),
-				new Point3D(-225, -225, -270));
+				new Point3D(-225, -110, -260),
+				new Point3D(-210, -225, -270));
 
 		triangle.setEmmission(new Color (0, 0, 100));
 		triangle.setShininess(4);
@@ -122,7 +79,7 @@ public class LightingTest {
 		sphere.setEmmission(new Color(0, 0, 100));
 		scene.addGeometry(sphere);
 		scene.addLight(new PointLight(new Color(255,100,100), new Point3D(-200, -200, -100), 
-				0, 0.00001, 0.000005));
+				0.0002, 0.00001, 0.000005));
 
 		ImageWriter imageWriter = new ImageWriter("Point lighting test", 500, 500, 500, 500);
 
