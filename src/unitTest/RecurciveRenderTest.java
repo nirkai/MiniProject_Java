@@ -25,7 +25,7 @@ public class RecurciveRenderTest {
 		
 		
 		Triangle triangle1 = new Triangle(new Point3D(100,-350,-3000), 
-				 new Point3D(950, 3000, -1900),new Point3D(-1800,-350,-1300));
+				 new Point3D(-600, 1000, -1900),new Point3D(-1800,-350,-1300));
 		Plane plane = new Plane(new Vector(0, 1, 0), new Point3D(0, -350, -1600));
 		Sphere sphere1 = new Sphere(350, new Point3D(0, 0, -800));
 		Sphere sphere2 = new Sphere(200, new Point3D(300, 0, -1200));
@@ -82,7 +82,7 @@ public class RecurciveRenderTest {
 		
 		
 		Triangle triangle1 = new Triangle(new Point3D(100,-350,-3000), 
-				 new Point3D(950, 3000, -1900),new Point3D(-1800,-350,-1300));
+				 new Point3D(-600, 1000, -1900),new Point3D(-1800,-350,-1300));
 		Plane plane = new Plane(new Vector(0, 1, 0), new Point3D(0, -350, -1600));
 		Sphere sphere1 = new Sphere(350, new Point3D(0, 0, -800));
 		Sphere sphere2 = new Sphere(200, new Point3D(300, 0, -1200));

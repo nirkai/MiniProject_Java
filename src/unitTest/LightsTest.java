@@ -34,8 +34,8 @@ public class LightsTest {
 		
 		triangle1.setEmmission(new Color(0,0,0));
 		triangle2.setEmmission(new Color(0,0,0));
-		triangle1.setShininess(1);
-		triangle2.setShininess(1);
+		triangle1.setShininess(20);
+		triangle2.setShininess(20);
 
 		triangle1.setEmmission(new Color(0, 0, 0));
 		triangle2.setEmmission(new Color(0, 0, 0));
@@ -53,7 +53,7 @@ public class LightsTest {
 		scene = new Scene(new AmbientLight(255,255,255), new Color(0,0,0), new Camera(), 100);
 		imageWriter = new ImageWriter("Point Light Test 4", 500, 500, 500, 500);
 		
-		pointLight = new PointLight(new Color(255, 50, 50), new Point3D(0, 0,0), 0.0000056, 0.0000056, 0.000032);
+		pointLight = new PointLight(new Color(255, 50, 50), new Point3D(0, 0,0), 0, 0.0000056, 0.000032);
 		scene.addGeometry(triangle1);
 		scene.addGeometry(triangle2);
 		scene.addLight(pointLight);
@@ -93,7 +93,7 @@ public class LightsTest {
 		render.writeToImage();
 	}
 
-	@Test
+	/*@Test
 	public void sBallTest(){
 		scene = new Scene(new AmbientLight(255,255,255), new Color(0,0,0), new Camera(), 100);
 		imageWriter = new ImageWriter("Ball Spot Light Test 4", 500, 500, 500, 500);
@@ -105,5 +105,5 @@ public class LightsTest {
 		render.renderImage();
 		render.writeToImage();
 	}
-	
+	*/
 }
