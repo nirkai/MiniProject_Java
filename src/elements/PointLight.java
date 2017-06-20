@@ -16,6 +16,8 @@ public class PointLight extends Light implements LightSource{
 		_Kq = kq;
 	}
 	// ***************** Getters/Setters ********************** //
+	
+	//Il=I0/(Kc+Kj*D+KqD^2)
 	@Override
 	public Color getIntensity(Point3D point)	{
 		double d = point.distance(_position);

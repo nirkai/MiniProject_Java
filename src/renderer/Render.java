@@ -110,6 +110,33 @@ public class Render	{
 		return _scene.getAmbientLight().getIntensity();
 	}
 	
+//<<<<<<< HEAD
+	/*
+	private Color calcColor(Geometry geometry, Point3D point, Ray ray);
+	private Color calcColor(Geometry geometry, Point3D point,
+			Ray inRay, int level); // Recursive
+	private Ray constructRefractedRay(Geometry geometry, Point3D point,
+			Ray inRay);
+	private Ray constructReflectedRay(Vector normal, Point3D point,
+			Ray inRay);
+	private boolean occluded(LightSource light, Point3D point,
+			Geometry geometry);
+	private Color calcSpecularComp(double ks, Vector v, Vector normal,
+			Vector l, double shininess, Color lightIntensity);
+	private Color calcDiffusiveComp(double kd, Vector normal, Vector l,
+			Color lightIntensity);
+	private Map<Geometry, Point3D> getClosestPoint(Map<Geometry,
+			List<Point3D>> intersectionPoints);
+	private Map<Geometry, List<Point3D>> getSceneRayIntersections(Ray ray);
+	private Color addColors(Color a, Color b);
+	*/
+	
+	/**
+	 * A function that checks a point with the importance of which geometry is involved because the emission.
+	 * For this purpose users are used Map 
+	 */
+	
+
 	public void renderImage(){
 		
 		Random random = new Random();
@@ -191,7 +218,11 @@ public class Render	{
 		Color I0 = new Color (r,g,b);
 		return I0;
 	}
-	
+	/**
+	 * 
+	 * @param ray =  to examine whether it is in intersection with one of the geometries
+	 * @return Map<Geometry, List<Point3D>>
+	 */
 	private Map<Geometry, List<Point3D>> getSceneRayIntersections(Ray ray){
 		Iterator<Geometry> geometries = _scene.getGeometriesIterator();
 		Map<Geometry, List<Point3D>> intersectionPoints = new HashMap<Geometry, List<Point3D>>();
@@ -203,7 +234,11 @@ public class Render	{
 		}
 		return intersectionPoints;
 	}
-	
+	/**
+	 * 
+	 * @param intersectionPoints = Collects all points that the ray hits geometrically
+	 * @return The nearest point
+	 */
 	private Map<Geometry, Point3D> getClosestPoint(Map<Geometry,
 			List<Point3D>> intersectionPoints){
 		double distance = Double.MAX_VALUE;
@@ -242,7 +277,14 @@ public class Render	{
 						 addColors(diffuseLight, specularLight)); 
 	}
 	
-	
+	/**
+	 * 
+	 * @param geometry = Type of geometry
+	 * @param point = Clash point
+	 * @return Color calculated by emission+ambientLight+diffuseLight+specularLight
+	 * 
+	 * The function check whether there is a barrier between lighting and geometry
+	 */
 	private Color calcColor3(Geometry geometry, Point3D point){
 		Color emissionLight = geometry.getEmmission();
 		Color ambientLight = _scene.getAmbientLight().getIntensity();
@@ -251,6 +293,8 @@ public class Render	{
 		Iterator<LightSource> lights = _scene.getLightsIterator();
 		while (lights.hasNext()){
 			LightSource light = lights.next();
+			
+			//Check whether there is a barrier between lighting and geometry
 			if (!occluded(light, point, geometry)) {
 				diffuseLight = addColors(diffuseLight, 
 						calcDiffusiveComp(geometry.getMaterial().getKd(), geometry.getNormal(point),
@@ -417,15 +461,21 @@ public class Render	{
 		}
 		return minDistancePoint;
 	}
-	
+	/**
+	 * 
+	 * @param light = Type of LightSource
+	 * @param geometry = Type of geometry
+	 * @param point = Clash point
+	 * @return  true if the point is hidden from light source and false if not
+	 */
 	private boolean occluded(LightSource light, Point3D point, Geometry geometry) {
 		Vector lightDirection = light.getL(point);
 		lightDirection.scale(-1);
 		Point3D geometryPoint = new Point3D(point);
 		Vector epsVector = new Vector(geometry.getNormal(point));
 		epsVector.scale(2);
-		geometryPoint.add(epsVector);
-		Ray lightRay = new Ray(geometryPoint, lightDirection);
+		geometryPoint.add(epsVector);//because floting point
+		Ray lightRay = new Ray(geometryPoint, lightDirection);//ray direction the light
 		Map<Geometry, List<Point3D>> intersectionPoints = getSceneRayIntersections(lightRay);
 		
 		if (!intersectionPoints.entrySet().isEmpty() && light instanceof PointLight && ((PointLight)light).getPosition().distance(point) < intersectionPoints.entrySet().iterator().next().getValue().get(0).distance(point)) {
@@ -444,7 +494,7 @@ public class Render	{
 		
 		//return !intersectionPoints.isEmpty();
 	}
-	
+	//kd*(n*l)Il
 	private Color calcDiffusiveComp(double kd, Vector normal, Vector l,	Color lightIntensity){
 		l.normalize();
 		normal.normalize();
@@ -456,13 +506,14 @@ public class Render	{
 		return multColor(lightIntensity, dot);
 	}
 	
+	//ks*(v*r)^n*Il
 	private Color calcSpecularComp(double ks, Vector v, Vector normal,
 			Vector l, double shininess, Color lightIntensity){
 		l.normalize();
 		normal.normalize();
 		double scal = 2 * l.dotProduct(normal);
 		normal.scale(scal);
-		Vector R = new Vector(l);
+		Vector R = new Vector(l);//R = Vector reflection of light
 		R.subtract(normal);
 		R.normalize();
 
@@ -478,7 +529,7 @@ public class Render	{
 		return multColor(lightIntensity, rgb);
 		
 	}
-	
+	//Connecting two color dots
 	private Color addColors(Color c1, Color c2){
 		int r = Math.min((c1.getRed() + c2.getRed()),255);
 	    int g = Math.min((c1.getGreen() + c2.getGreen()),255);
