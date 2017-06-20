@@ -71,8 +71,8 @@ public class RecurciveRenderTest {
 		scene.addLight(pointLight);
 		
 		Render render = new Render(imageWriter, scene);
-		render.renderImage();
-		render.writeToImage();
+//		render.renderImage();
+//		render.writeToImage();
 	}
 	
 	@Test
@@ -128,8 +128,8 @@ public class RecurciveRenderTest {
 		
 		scene.addLight(spotLight);
 		Render render = new Render(imageWriter, scene);
-		render.renderImage();
-		render.writeToImage();
+//		render.renderImage();
+//		render.writeToImage();
 	}
 	
 	@Test
@@ -156,8 +156,8 @@ public class RecurciveRenderTest {
 		
 		Render render = new Render(imageWriter, scene);
 		
-		render.renderImage();
-		render.writeToImage();
+//		render.renderImage();
+//		render.writeToImage();
 	}
 	
 	
@@ -197,7 +197,7 @@ public class RecurciveRenderTest {
 		scene.addLight(new SpotLight(new Color(255, 100, 100),  new Point3D(200, 200, -150), 
 				   new Vector(-2, -2, -3), 0, 0.00001, 0.000005));
 	
-		ImageWriter imageWriter = new ImageWriter("Recursive Test 2", 500, 500, 500, 500);
+		ImageWriter imageWriter = new ImageWriter("Recursive Test 2.1", 500, 500, 500, 500);
 		
 		Render render = new Render(imageWriter, scene);
 		
@@ -242,12 +242,12 @@ public class RecurciveRenderTest {
 		scene.addLight(new SpotLight(new Color(255, 100, 100),  new Point3D(200, 200, -150), 
 				   new Vector(-2, -2, -3), 0, 0.00001, 0.000005));
 	
-		ImageWriter imageWriter = new ImageWriter("Recursive Test 3", 500, 500, 500, 500);
+		ImageWriter imageWriter = new ImageWriter("Recursive Test 3.2", 500, 500, 500, 500);
 		
 		Render render = new Render(imageWriter, scene);
 		
-		render.renderImage();
-		render.writeToImage();
+		//render.renderImage();
+		//render.writeToImage();
 	}
 
 }

@@ -31,4 +31,8 @@ public class PointLight extends Light implements LightSource{
 	public Vector getL(Point3D point){
 		return new Vector(point, _position);
 	}
+	
+	public Point3D getPosition() {
+		return new Point3D(_position);
+	}
 }

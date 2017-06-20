@@ -25,7 +25,7 @@ public class ShadowsTest {
 	@Test
 	public void shadowPoint() {
 		scene = new Scene(new AmbientLight(255,255,255), new Color(0,0,0), new Camera(), 100);
-		imageWriter = new ImageWriter("Shadow point Test1", 500, 500, 500, 500);
+		imageWriter = new ImageWriter("Shadow point Test1.1", 500, 500, 500, 500);
 		Sphere sph = new Sphere(900, new Point3D(0,0,-1300));
 		sph.setKd(1); sph.setKs(1); sph.setKr(0); sph.setKt(0);
 		sph.setShininess(35);
@@ -77,7 +77,7 @@ public class ShadowsTest {
 				new Vector(-2, -2, -3), 0, 0.000001, 0.0000005));
 
 
-		imageWriter = new ImageWriter("Shadow Spot test", 500, 500, 500, 500);
+		imageWriter = new ImageWriter("Shadow Spot test 1", 500, 500, 500, 500);
 
 		render = new Render(imageWriter, scene);
 		render.renderImage();
@@ -87,7 +87,7 @@ public class ShadowsTest {
 	@Test
 	public void pointShadowTest(){
 		scene = new Scene(new AmbientLight(255,255,255), new Color(0,0,0), new Camera(), 250);
-		imageWriter = new ImageWriter("Shadow Point Ball on Plan Test", 500, 500, 500, 500);
+		imageWriter = new ImageWriter("Shadow Point Ball on Plan Test 1", 500, 500, 500, 500);
 		Plane plane = new Plane(new Vector(0,0,1), new Point3D(0,0,-520));
 		plane.setShininess(200);
 		sph1 = new Sphere(120, new Point3D(0,0,-400));
@@ -126,7 +126,7 @@ public class ShadowsTest {
 				 0, 0.000001, 0.0000005));
 
 
-		imageWriter = new ImageWriter("Shadow Point test", 500, 500, 500, 500);
+		imageWriter = new ImageWriter("Shadow Point test 1.1", 500, 500, 500, 500);
 
 		render = new Render(imageWriter, scene);
 		render.renderImage();
@@ -136,7 +136,7 @@ public class ShadowsTest {
 	@Test
 	public void test(){
 		scene = new Scene(new AmbientLight(255,255,255), new Color(0,0,0), new Camera(), 250);
-		imageWriter = new ImageWriter("Shadow Point Test2", 500, 500, 500, 500);
+		imageWriter = new ImageWriter("Shadow Point Test2.1", 500, 500, 500, 500);
 		Plane plane = new Plane(new Vector(0,0,1), new Point3D(0,0,-520));
 		plane.setShininess(200);
 		sph1 = new Sphere(120, new Point3D(0,0,-400));
@@ -150,7 +150,7 @@ public class ShadowsTest {
 		render.renderImage();
 		render.writeToImage();
 
-		imageWriter = new ImageWriter("Point LightBalls Shadows Test", 500, 500, 500, 500);
+		imageWriter = new ImageWriter("Point LightBalls Shadows Test 1", 500, 500, 500, 500);
 		plane = new Plane(new Vector(0, 1, 0), new Point3D(0, -350, -1600));
 		Sphere sp2 = new Sphere(30, new Point3D(0,100, -150));
 		Sphere sp3 = new Sphere(30, new Point3D(-80,120, -160));

@@ -7,8 +7,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Random;
 
 import elements.LightSource;
+import elements.PointLight;
 //import elements.LightSource;
 import geometries.FlatGeometry;
 import geometries.Geometry;
@@ -20,9 +22,9 @@ import scene.Scene;
 public class Render	{
 	private Scene _scene;
 	private ImageWriter _imageWriter;
-	private final int RECURSION_LEVEL = 6;
+	private final int RECURSION_LEVEL = 4;
 	private final double EPS = 0.0001;
-	
+	private final int SUPER_SAMPLING = 5;
 	// ***************** Constructors ********************** //
 	/**
 	 * this contractor take all the parameters of a scene and make a picture. 
@@ -109,6 +111,51 @@ public class Render	{
 	}
 	
 	public void renderImage(){
+		
+		Random random = new Random();
+		int r,g,b;
+		Color color = new Color(0, 0, 0);
+		Map<Geometry, List<Point3D>> intersectionPoints = new HashMap<Geometry, List<Point3D>>();
+		for (int i = 0; i < _imageWriter.getNx(); i++) {
+			for (int j = 0; j < _imageWriter.getNy(); j++) {
+				r = 0; g= 0; b= 0;
+				
+				for (int k = 0; k < SUPER_SAMPLING; k++){
+					double Nx = random.nextDouble() - 0.5;
+					double Ny = random.nextDouble() - 0.5;
+				
+				
+					Ray ray = _scene.getCamera().constructRayThroughPixel(_imageWriter.getNx(),
+							_imageWriter.getNy(), j + Ny, i + Nx,_scene.getScreenDistance(), _imageWriter.getWidth(), 
+							_imageWriter.getHeight());
+					intersectionPoints = getSceneRayIntersections(ray);
+					if (intersectionPoints.isEmpty()) {
+						color = _scene.getBackground();
+					}
+					else{
+						Map<Geometry, Point3D> closestPoint = getClosestPoint(intersectionPoints);
+						Entry<Geometry, Point3D> clos;
+						Iterator<Entry<Geometry, Point3D>> iterator = closestPoint.entrySet().iterator();
+						if (iterator.hasNext()) {	
+							clos = iterator.next();
+							color = calcColor(clos.getKey(),	clos.getValue(), ray);
+						}
+					}
+					r += color.getRed();
+					g += color.getGreen();
+					b += color.getBlue();
+					
+				}
+				r = Math.min(r/SUPER_SAMPLING, 255);
+				g = Math.min(g/SUPER_SAMPLING, 255);
+				b = Math.min(b/SUPER_SAMPLING, 255);
+				
+				_imageWriter.writePixel(j, i, new Color(r,g,b));
+			}
+		}
+	}
+	
+	public void renderImage0(){
 		Map<Geometry, List<Point3D>> intersectionPoints = new HashMap<Geometry, List<Point3D>>();
 		for (int i = 0; i < _imageWriter.getNx(); i++) {
 			for (int j = 0; j < _imageWriter.getNy(); j++) {
@@ -251,7 +298,7 @@ public class Render	{
 		Map<Geometry, Point3D> reflectedEntry = findClosesntIntersection(reflectedRay);
 		Color reflectedColor = new Color(0, 0, 0);
 		Color reflectedLight = new Color(0, 0, 0);
-		if (!reflectedEntry.isEmpty()) {
+		if (!reflectedEntry.isEmpty()&& geometry.getMaterial().getKr() != 0) {
 			
 			reflectedColor = calcColor(reflectedEntry.entrySet().iterator().next().getKey(), 
 											reflectedEntry.entrySet().iterator().next().getValue(), 
@@ -264,7 +311,7 @@ public class Render	{
 		Map<Geometry, Point3D> refractedEntry = findClosesntIntersection(refractedRay);
 		Color refractedColor = new Color(0, 0, 0);
 		Color refractedLight = new Color(0, 0, 0);
-		if (!refractedEntry.isEmpty()) {
+		if (!refractedEntry.isEmpty() && geometry.getMaterial().getKt() != 0) {
 			refractedColor = calcColor(refractedEntry.entrySet().iterator().next().getKey(), 
 										refractedEntry.entrySet().iterator().next().getValue(), 
 										refractedRay, level + 1);
@@ -380,6 +427,10 @@ public class Render	{
 		geometryPoint.add(epsVector);
 		Ray lightRay = new Ray(geometryPoint, lightDirection);
 		Map<Geometry, List<Point3D>> intersectionPoints = getSceneRayIntersections(lightRay);
+		
+		if (!intersectionPoints.entrySet().isEmpty() && light instanceof PointLight && ((PointLight)light).getPosition().distance(point) < intersectionPoints.entrySet().iterator().next().getValue().get(0).distance(point)) {
+			return false;
+		}
 		
 		// Flat geometry cannot self intersect
 		if (geometry instanceof FlatGeometry){
