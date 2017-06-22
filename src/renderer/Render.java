@@ -181,7 +181,10 @@ public class Render	{
 			}
 		}
 	}
-	
+	/**
+	 * Computer cutting points are geometric types and close points
+	 *  and determines whether to paint them or background color
+	 */
 	public void renderImage0(){
 		Map<Geometry, List<Point3D>> intersectionPoints = new HashMap<Geometry, List<Point3D>>();
 		for (int i = 0; i < _imageWriter.getNx(); i++) {
@@ -314,6 +317,15 @@ public class Render	{
 		return calcColor(geometry, point, ray, 0);
 	}
 	
+	/**
+	 * 
+	 * @param geometry = Type of geometry
+	 * @param point = Clash point
+	 * @return Color calculated by emission+ambientLight+diffuseLight+specularLight
+	 * @return inRay = ray of the point
+	 * @return level = The number of times the riccure will run
+	 * The function check whether there is a barrier between lighting and geometry
+	 */
 	private Color calcColor(Geometry geometry, Point3D point, Ray inRay, int level){ 
 		
 		if (level == RECURSION_LEVEL) 
@@ -367,7 +379,7 @@ public class Render	{
 				 addColors(diffuseLight, specularLight)), 
 				addColors(reflectedLight, refractedLight)); 
 	}
-	
+	//
 	private Ray constructReflectedRay(Vector normal, Point3D point,	Ray inRay){
 		//TODO
 		Vector R = inRay.getDirection(); // already normalize
@@ -445,7 +457,11 @@ public class Render	{
 		//pointEps.add(temp);
 		return new Ray(pointEps, inRay.getDirection());
 	}*/
-	
+	/**
+	 * 
+	 * @param ray = The ray that cuts
+	 * @return The point closest
+	 */
 	private Map<Geometry, Point3D> findClosesntIntersection(Ray ray){
 		Map<Geometry, List<Point3D>> intersections = getSceneRayIntersections(ray);
 		double distance = Double.MAX_VALUE;
